@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Exp from "../components/Exp.astro";
+import ImgSelf from '../assets/anemone.jpg';
 ---
 
 <Layout>
@@ -12,7 +13,7 @@ import Exp from "../components/Exp.astro";
         <!-- Left: Personal Image -->
         <div class="flex-shrink-0">
           <img
-            src="/src/assets/anemone.jpg"
+            src={ImgSelf.src}
             alt="pic of me :3"
             class="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover"
           />

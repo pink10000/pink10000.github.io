@@ -1,5 +1,5 @@
 {
-  "name": "my-portfolio",
+  "name": "kytrinh-portfolio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/tailwind": "^5.1.4",
     "astro": "^5.1.2"
   },
   "devDependencies": {

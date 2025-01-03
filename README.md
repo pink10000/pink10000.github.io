@@ -1,2 +1,8 @@
-# pink10000.github.io
-self website (finally)
+# portfolio website
+
+To run,
+```
+npm install
+npm run dev
+```
+thanks.

@@ -1,0 +1,33 @@
+---
+const { title = "My Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <!-- <header class="text-black fixed w-full top-0">
+      <nav class="container mx-auto flex justify-center items-center py-4">
+        <ul class="flex space-x-8">
+          <li><a href="/" class="hover:text-gray-400">Home</a></li>
+          <li><a href="/projects" class="hover:text-gray-400">Projects</a></li>
+          <li><a href="/blog" class="hover:text-gray-400">Blog</a></li>
+          <li><a href="/contact" class="hover:text-gray-400">Contact</a></li>
+        </ul>
+      </nav>
+    </header> -->
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <div class="text-center py-4">
+        <p>© {new Date().getFullYear()} My Portfolio. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<button
+  id="darkModeToggle"
+  class="flex items-center justify-center bg-gray-200 text-black w-6 h-6 rounded hover:bg-gray-300 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-600"
+>
+  <span class="material-icons-outlined">light_mode</span>
+</button>
+<script>
+  const toggleButton = document.getElementById("darkModeToggle");
+  const rootElement = document.documentElement;
+  const darkButton =
+    '<span class="material-icons-outlined block text-base">dark_mode</span>';
+  const lightButton =
+    '<span class="material-icons-outlined block text-base">light_mode</span>';
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem("theme");
+  if (toggleButton) {
+    if (savedTheme) {
+      rootElement.classList.add(savedTheme);
+      toggleButton.innerHTML = savedTheme === "dark" ? darkButton : lightButton;
+    }
+
+    // Toggle dark mode and change icon
+    toggleButton.addEventListener("click", () => {
+      if (rootElement.classList.contains("dark")) {
+        rootElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        toggleButton.innerHTML = darkButton;
+      } else {
+        rootElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        toggleButton.innerHTML = lightButton;
+      }
+    });
+  }
+</script>

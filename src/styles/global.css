@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 body {
-    @apply font-mono; /* Apply the custom JetBrains Mono font */
-  }
-  
+  @apply font-mono;
+}
+
+.theme-transition {
+  @apply transition-colors duration-default dark:text-gray-100;
+}

@@ -9,6 +9,9 @@ on:
   push:
     branches: ["main"]
 
+  repository_dispatch:
+    types: [ deploy-notes ] # Listens for the specific event type you defined earlier
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -30,11 +33,31 @@ env:
 
 jobs:
   build:
-    name: Build
+    name: Build Combined Site
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Astro site
         uses: actions/checkout@v4
+
+      - name: Checkout 140 repo
+        uses: actions/checkout@v4
+        with:
+          repository: pink10000/real_analysis_notes
+          ssh-key: ${{ secrets.NOTES_DEPLOY_KEY }}
+          path: ./external/math140a
+
+      - name: Setup Node for Notes Build 
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }} 
+
+      - name: Build Notes Site (Quartz) 
+        run: |
+          echo "Building notes site located in ./external/math140a/quartz"
+          npm install
+          npx quartz build
+        working-directory: ./external/math140a/quartz
+
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -54,28 +77,50 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
-      - name: Setup Node
+
+      - name: Setup Node for Astro Build
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
+      
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Install dependencies
+      
+      - name: Install astro dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
+
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ env.BUILD_PATH }}/dist
+
+      - name: Combine Astro and Notes outputs
+        run: |
+          echo "Copying built notes into Astro output directory..."
+          # Assumes Astro builds to './dist' (default) and notes should go to '/140a' URL path
+          # Create the target directory inside Astro's build output first
+          mkdir -p ${{ env.BUILD_PATH }}/dist/140a
+          # Copy the built Quartz files into that directory
+          cp -r ./external/math140a/quartz/public/* ${{ env.BUILD_PATH }}/dist/140a/
+          echo "Combined site structure in dist folder:"
+          ls -lR ${{ env.BUILD_PATH }}/dist # List output for debugging
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.BUILD_PATH }}/dist # Uploads the directory which now contains ./dist/140a
+
 
   deploy:
     environment:

@@ -51,28 +51,6 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }} 
 
-      - name: Prepare Notes Content for Quartz Build
-        run: |
-          echo "Copying notes content into ./external/math140a/quartz/content/"
-          NOTES_CHECKOUT_PATH="./external/math140a"
-          QUARTZ_CONTENT_PATH="./external/math140a/quartz/content"
-          # Ensure target content dir exists and is empty
-          rm -rf $QUARTZ_CONTENT_PATH
-          mkdir -p $QUARTZ_CONTENT_PATH
-          # Copy only the specific notes/asset folders into the target
-          # Adjust this list as needed for your content structure
-          echo "Copying notes folders..."
-          cp -r $NOTES_CHECKOUT_PATH/140A_lectures $QUARTZ_CONTENT_PATH/
-          cp -r $NOTES_CHECKOUT_PATH/140B_lectures $QUARTZ_CONTENT_PATH/
-          cp -r $NOTES_CHECKOUT_PATH/ch1 $QUARTZ_CONTENT_PATH/
-          cp -r $NOTES_CHECKOUT_PATH/ch2 $QUARTZ_CONTENT_PATH/
-          cp -r $NOTES_CHECKOUT_PATH/ch3 $QUARTZ_CONTENT_PATH/
-          cp -r $NOTES_CHECKOUT_PATH/ch4 $QUARTZ_CONTENT_PATH/
-          cp -r $NOTES_CHECKOUT_PATH/ch5 $QUARTZ_CONTENT_PATH/
-          # Example: cp -r $NOTES_CHECKOUT_PATH/images $QUARTZ_CONTENT_PATH/
-          echo "Content prepared in $QUARTZ_CONTENT_PATH:"
-          ls -l $QUARTZ_CONTENT_PATH
-
       - name: Build Notes Site (Quartz) 
         run: |
           echo "Building notes site located in ./external/math140a/quartz"

@@ -39,83 +39,55 @@ jobs:
       - name: Checkout Astro site
         uses: actions/checkout@v4
 
-      - name: Checkout 140 repo
+      - name: Checkout Quartz fork repo (with notes submodule)
         uses: actions/checkout@v4
         with:
-          repository: pink10000/real_analysis_notes
-          ssh-key: ${{ secrets.NOTES_DEPLOY_KEY }}
-          path: ./external/math140a
+          repository: pink10000/quartz-site
+          submodules: 'recursive'
+          ssh-key: ${{ secrets.NOTES_DEPLOY_KEY }}  
+          path: ./quartz-build-source
 
-      - name: Setup Node for Notes Build 
+      - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }} 
-
-      - name: Build Notes Site (Quartz) 
+          node-version: 22
+          cache: 'npm'
+      
+      - name: Clean and Install Astro Dependencies
         run: |
-          echo "Building notes site located in ./external/math140a/quartz"
+          echo "Performing a clean install of Astro dependencies..."
+          rm -rf node_modules package-lock.json
           npm install
+
+      - name: Build Obsidian Notes on Quartz
+        working-directory: ./quartz-build-source
+        run: | 
+          echo "Setting up Node and building Quartz site"
+          npm ci 
           npx quartz build
-        working-directory: ./external/math140a/quartz
-
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
-
-      - name: Setup Node for Astro Build
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
       
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
       
-      - name: Install astro dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-        working-directory: ${{ env.BUILD_PATH }}
-
       - name: Build with Astro
-        run: |
-          ${{ steps.detect-package-manager.outputs.runner }} astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
-        working-directory: ${{ env.BUILD_PATH }}
+        run: npm run build
 
       - name: Combine Astro and Notes outputs
         run: |
           echo "Copying built notes into Astro output directory..."
-          # Assumes Astro builds to './dist' (default) and notes should go to '/140a' URL path
           # Create the target directory inside Astro's build output first
-          mkdir -p ${{ env.BUILD_PATH }}/dist/140a
+          mkdir -p ./dist
           # Copy the built Quartz files into that directory
-          cp -r ./external/math140a/quartz/public/* ${{ env.BUILD_PATH }}/dist/140a/
+          cp -r ./quartz-build-source/public/* ./dist/
           echo "Combined site structure in dist folder:"
-          ls -lR ${{ env.BUILD_PATH }}/dist # List output for debugging
+          find ./dist -type f -name "*.html" | head -10  # Show sample HTML files for debugging
+          echo "Total files copied: $(find ./dist -type f | wc -l)"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.BUILD_PATH }}/dist # Uploads the directory which now contains ./dist/140a
-
+          path: ./dist 
 
   deploy:
     environment:

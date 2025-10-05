@@ -9,7 +9,7 @@ module.exports = {
       },
       colors: {
         dark: {
-          background: '#121212',
+          background: '#161616',
         },
       },
       transitionDuration: {

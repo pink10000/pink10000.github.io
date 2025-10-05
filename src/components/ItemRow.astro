@@ -1,0 +1,20 @@
+---
+import VertBar from "./VertBar.astro";
+const { title, meta } = Astro.props;
+---
+
+<li class="contents">
+  <span class="font-bold text-right whitespace-normal break-words">
+    {title}
+    {meta ? (
+      <>
+        <br />
+        <span class="text-xs font-normal">{meta}</span>
+      </>
+    ) : null}
+  </span>
+  <VertBar />
+  <span>
+    <slot />
+  </span>
+</li>

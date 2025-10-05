@@ -4,6 +4,8 @@ import Exp from "../components/Exp.astro";
 import Stack from "../components/Stack.astro";
 import ImgSelf from "../assets/portrait.jpg";
 import Dark from "../components/Dark.astro";
+import Jobs from "../components/Jobs.astro";
+import Events from "../components/Events.astro";
 ---
 
 <Layout>
@@ -86,27 +88,35 @@ import Dark from "../components/Dark.astro";
         </p>
 
         <!-- Research Interests -->
-        <h2 class="text-2xl lg:text-2xl font-bold mb-2">research interests</h2>
+        <!-- <h2 class="text-2xl lg:text-2xl font-bold mb-2">research interests</h2>
         <ul class="theme-transition list-disc list-inside text-gray-700 mb-4">
           <li>distributed networked systems</li>
           <li>algebraic formalization</li>
           <li>llm assisted proof generation</li>
-        </ul>
+        </ul> -->
+        <!-- Experience -->
+        <h2 class="text-2xl lg:text-2xl font-bold mb-2">places i worked at</h2>
+        <Jobs />
+
         <!-- Projects -->
         <h2 class="text-2xl lg:text-2xl font-bold mb-2">stuff i worked on</h2>
         <Exp />
+
+        <!-- Wins -->
+        <h2 class="text-2xl lg:text-2xl font-bold mb-2">events i won</h2> 
+        <Events />
 
         <!-- Stack -->
         <h2 class="text-2xl lg:text-2xl font-bold mb-2">tech stack(s)</h2>
         <Stack />
 
         <!-- Blog -->
-        <h2 class="text-2xl lg:text-2xl font-bold mb-4">blog</h2>
+        <!-- <h2 class="text-2xl lg:text-2xl font-bold mb-4">blog</h2>
         <p class="text-gray-700 theme-transition mb-4">
           <li> 
             <a href="/blog/keyboard" class="text-blue-500 underline">building a split keyboard</a>
           </li>
-        </p>
+        </p> -->
         <!-- <ul class="list-disc list-inside text-gray-700">
           <li>
             <a href="/blog/post1" class="text-blue-500 underline">Blog Post 1</a

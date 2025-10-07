@@ -9,3 +9,40 @@ body {
 .theme-transition {
   @apply transition-colors duration-default dark:text-dark-base04;
 }
+
+/* View Transitions API - Theme Toggle Animation */
+:root {
+  --expo-in: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+/* gif-1 */
+::view-transition-group(root) {
+  animation-timing-function: var(--expo-in);
+}
+
+::view-transition-new(root) {
+  mask: url('https://media.tenor.com/cyORI7kwShQAAAAi/shigure-ui-dance.gif') center / 0 no-repeat;
+  animation: scale 3s;
+  animation-fill-mode: both;
+}
+
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: scale 3s;
+  animation-fill-mode: both;
+}
+
+@keyframes scale {
+  0% {
+    mask-size: 0;
+  }
+  10% {
+    mask-size: 50vmax;
+  }
+  90% {
+    mask-size: 50vmax;
+  }
+  100% {
+    mask-size: 2000vmax;
+  }
+}

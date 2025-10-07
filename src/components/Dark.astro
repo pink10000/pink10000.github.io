@@ -20,8 +20,8 @@
       toggleButton.innerHTML = savedTheme === "dark" ? darkButton : lightButton;
     }
 
-    // Toggle dark mode and change icon
-    toggleButton.addEventListener("click", () => {
+    // Function to switch theme
+    const switchTheme = () => {
       if (rootElement.classList.contains("dark")) {
         rootElement.classList.remove("dark");
         localStorage.setItem("theme", "light");
@@ -31,6 +31,15 @@
         localStorage.setItem("theme", "dark");
         toggleButton.innerHTML = lightButton;
       }
+    };
+
+    // Toggle dark mode with View Transition API
+    toggleButton.addEventListener("click", () => {
+      if (!document.startViewTransition) {
+        switchTheme();
+        return;
+      }
+      document.startViewTransition(switchTheme);
     });
   }
 </script>

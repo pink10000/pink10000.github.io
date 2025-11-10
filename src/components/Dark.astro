@@ -33,13 +33,9 @@
       }
     };
 
-    // Toggle dark mode with View Transition API
+    // Toggle dark mode
     toggleButton.addEventListener("click", () => {
-      if (!document.startViewTransition) {
-        switchTheme();
-        return;
-      }
-      document.startViewTransition(switchTheme);
+      switchTheme();
     });
   }
 </script>

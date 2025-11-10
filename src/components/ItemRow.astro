@@ -1,11 +1,17 @@
 ---
 import VertBar from "./VertBar.astro";
-const { title, meta } = Astro.props;
+const { title, meta, link } = Astro.props;
 ---
 
 <li class="contents">
   <span class="font-bold text-right whitespace-normal break-words text-light-base04 dark:text-dark-base0D">
-    {title}
+    {link ? (
+      <a href={link} target="_blank" rel="noopener noreferrer" class="text-light-base0B dark:text-dark-base0B underline">
+        {title}
+      </a>
+    ) : (
+      title
+    )}
     {meta ? (
       <>
         <br />

@@ -22,7 +22,7 @@ import ItemRow from "./ItemRow.astro";
   </ItemRow>
 
   <ItemRow title="termail" link="https://github.com/pink10000/termail">
-    Built an asynchronous TUI email client in Rust with `ratatui` and tokio, supporting backends like Gmail and Greenmail. Supports OAuth2 and simple username/password security. Features a modular architecture and a planned plugin system using WebAssembly for secure, user-centric extensions. (WIP)
+    Architected a TUI email client implementing a plugin system via a custom WebAssembly (using the WASI component model) runtime for secure, sandboxed extension execution. Engineered a concurrent rendering pipeline to handle IMAP/SMTP network I/O asynchronously without blocking UI. Designed a modal-centric interface with ratatui, implementing vim-like keybindings for keyboard-only navigation. See technical report <a href="./papers/termail.pdf" target="_blank" rel="noopener noreferrer" class="text-light-base0B dark:text-dark-base0B underline">here</a>.
   </ItemRow>
 
   <!-- <ItemRow title="Taxi Predictor">

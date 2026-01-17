@@ -59,11 +59,18 @@ jobs:
           rm -rf node_modules package-lock.json
           npm install
 
+      - name: Install Quartz dependencies
+        working-directory: ./quartz-build-source
+        run:  npm ci
+
+      - name: Install Playwright browsers
+        working-directory: ./quartz-build-source
+        run: npx playwright install chromium --with-deps
+
       - name: Build Obsidian Notes on Quartz
         working-directory: ./quartz-build-source
         run: | 
-          echo "Setting up Node and building Quartz site"
-          npm ci 
+          echo "Building Quartz site with Desmos SVG generation..."
           npx quartz build
       
       - name: Setup Pages

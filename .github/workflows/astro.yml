@@ -39,14 +39,6 @@ jobs:
       - name: Checkout Astro site
         uses: actions/checkout@v4
 
-      - name: Checkout Quartz fork repo (with notes submodule)
-        uses: actions/checkout@v4
-        with:
-          repository: pink10000/quartz-site
-          submodules: 'recursive'
-          ssh-key: ${{ secrets.NOTES_DEPLOY_KEY }}  
-          path: ./quartz-build-source
-
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
@@ -58,20 +50,6 @@ jobs:
           echo "Performing a clean install of Astro dependencies..."
           rm -rf node_modules package-lock.json
           npm install
-
-      - name: Install Quartz dependencies
-        working-directory: ./quartz-build-source
-        run:  npm ci
-
-      - name: Install Playwright browsers
-        working-directory: ./quartz-build-source
-        run: npx playwright install chromium --with-deps
-
-      - name: Build Obsidian Notes on Quartz
-        working-directory: ./quartz-build-source
-        run: | 
-          echo "Building Quartz site with Desmos SVG generation..."
-          npx quartz build
       
       - name: Setup Pages
         id: pages
@@ -79,17 +57,6 @@ jobs:
       
       - name: Build with Astro
         run: npm run build
-
-      - name: Combine Astro and Notes outputs
-        run: |
-          echo "Copying built notes into Astro output directory..."
-          # Create the target directory inside Astro's build output first
-          mkdir -p ./dist
-          # Copy the built Quartz files into that directory
-          cp -r ./quartz-build-source/public/* ./dist/
-          echo "Combined site structure in dist folder:"
-          find ./dist -type f -name "*.html" | head -10  # Show sample HTML files for debugging
-          echo "Total files copied: $(find ./dist -type f | wc -l)"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

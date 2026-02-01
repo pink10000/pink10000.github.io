@@ -6,11 +6,12 @@ import ImgSelf from "../assets/portrait.jpg";
 import Dark from "../components/Dark.astro";
 import Jobs from "../components/Jobs.astro";
 import Events from "../components/Events.astro";
+import RingFairy from "../components/RingFairy.astro";
 ---
 
 <Layout>
   <section class="flex justify-center min-h-screen px-8">
-    <div class="max-w-4xl w-full py-8">
+    <div class="max-w-4xl w-full pt-8 pb-2">
       <div
         class="flex flex-col lg:flex-row items-center lg:items-start space-y-8 lg:space-y-0 lg:space-x-8"
       >
@@ -107,8 +108,12 @@ import Events from "../components/Events.astro";
         <Events />
 
         <!-- Stack -->
-        <h2 class="text-2xl lg:text-2xl font-bold mb-2 dark:text-dark-base05">tech stack(s)</h2>
-        <Stack />
+        <!-- <h2 class="text-2xl lg:text-2xl font-bold mb-2 dark:text-dark-base05">tech stack(s)</h2> -->
+        <!-- <Stack /> -->
+        
+        <hr class="mt-3 mb-2 border-t-2 border-light-base02 dark:border-dark-base0A" />
+
+        <RingFairy />
 
         <!-- Blog -->
         <!-- <h2 class="text-2xl lg:text-2xl font-bold mb-4">blog</h2>

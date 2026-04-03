@@ -125,6 +125,33 @@ import ItemRow from "./ItemRow.astro";
     >.
   </ItemRow>
 
+  <ItemRow
+    title="Auslander Buchsbaum Serre Theorem Formalization"
+    link="https://github.com/UCSD-computational-number-theory/lean_abs"
+  >
+    Attempted to formalize the Auslander-Buchsbaum-Serre theorem in Lean4, which
+    characterizes regular local rings as those with finite global dimension.
+    Project canceled due to the complexity of the required homological algebra
+    and commutative algebra machinery, alongside the steep learning curve of
+    Lean4 and its mathlib library.
+  </ItemRow>
+
+  <ItemRow
+    title="Concrete Semantics in Lean4"
+    link="https://github.com/pink10000/concrete-semantics-lean"
+  >
+    Formalized select chapters and problems of the textbook <a
+      href="https://concrete-semantics.org/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline"
+      >Concrete Semantics</a
+    > in Lean4, translating textbook operational semantics and program proofs into
+    machine-checked code. Added a small DSL layer via custom notation (e.g., list
+    constructors/operators) and used Mathlib tactics (e.g., linarith, ring) to mechanize
+    and simplify proof workflows. AFAIK first of it's kind on GitHub.
+  </ItemRow>
+
   <!-- <ItemRow title="Taxi Predictor">
     Engineered a predictive model utilizing Polynomial Regression to forecast
     taxi fares based on historical data. Built another model with a Decision

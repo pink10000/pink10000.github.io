@@ -2,38 +2,90 @@
 import ItemRow from "./ItemRow.astro";
 ---
 
-<ul class="theme-transition grid grid-cols-[10rem_2px_1fr] gap-x-4 gap-y-4 text-light-base05 mb-4">
+<ul
+  class="theme-transition grid grid-cols-[10rem_2px_1fr] gap-x-4 gap-y-4 text-light-base05 mb-4"
+>
   <ItemRow title="SURFStore">
     A fault-tolerant, asynchronous, distributed, networked database that
     supports file storage and retrieval using the RAFT consensus algorithm as
     part of CSE 224. Used Golang, gRPC, Protobuf, TCP/IP.
   </ItemRow>
 
-  <ItemRow title="junkfish" link="https://github.com/Grace-Note-LLC/distributed-chess">
+  <ItemRow
+    title="junkfish"
+    link="https://github.com/Grace-Note-LLC/distributed-chess"
+  >
     A Chess bot running on low-power recycled IoT microcontroller units on a
     custom chess engine in C++. Uses the minimax algorithm with alpha-beta
     pruning. Won 1st place at Fall 2024 UCSD IEEE Quarterly Projects.
   </ItemRow>
-  
+
   <ItemRow title="termail" link="https://github.com/pink10000/termail">
-    Architected a TUI email client implementing a plugin system via a custom WebAssembly (using the WASI component model) runtime for secure, sandboxed extension execution. Engineered a concurrent rendering pipeline to handle IMAP/SMTP network I/O asynchronously without blocking UI. Designed a modal-centric interface with ratatui, implementing vim-like keybindings for keyboard-only navigation. See technical report <a href="./papers/termail.pdf" target="_blank" rel="noopener noreferrer" class="text-light-base0B dark:text-dark-base0B underline">here</a>.
+    Architected a TUI email client implementing a plugin system via a custom
+    WebAssembly (using the WASI component model) runtime for secure, sandboxed
+    extension execution. Engineered a concurrent rendering pipeline to handle
+    IMAP/SMTP network I/O asynchronously without blocking UI. Designed a
+    modal-centric interface with ratatui, implementing vim-like keybindings for
+    keyboard-only navigation. See technical report <a
+      href="./papers/termail.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">here</a
+    >.
   </ItemRow>
 
-  <ItemRow title="enclose.horse ILP Solver" link="https://github.com/pink10000/eh_ilp_solver">
-    Built an Integer Linear Programming (ILP) solver for the puzzle game 
-    <a href="https://enclose.horse" target="_blank" rel="noopener noreferrer" class="text-light-base0B dark:text-dark-base0B underline">enclose.horse</a>, reducing each level to a multi-commodity flow ILP that enforces global connectivity (avoiding disconnected "adversarial" enclosures) while handling game mechanics like portals and tile modifiers. Benchmarked on 12,689 puzzles, the solver matched the reported optimal score on 93.87% of levels and exceeded it on 5.33%, with a 0.354s median solve time on non-timeout cases. See technical report
+  <ItemRow
+    title="enclose.horse ILP Solver"
+    link="https://github.com/pink10000/eh_ilp_solver"
+  >
+    Built an Integer Linear Programming (ILP) solver for the puzzle game
+    <a
+      href="https://enclose.horse"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">enclose.horse</a
+    >, reducing each level to a multi-commodity flow ILP that enforces global
+    connectivity (avoiding disconnected "adversarial" enclosures) while handling
+    game mechanics like portals and tile modifiers. Benchmarked on 12,689
+    puzzles, the solver matched the reported optimal score on 93.87% of levels
+    and exceeded it on 5.33%, with a 0.354s median solve time on non-timeout
+    cases. See technical report
     <a
       href="./papers/eh_ilp_solver.pdf"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-light-base0B dark:text-dark-base0B underline"
-    >here</a>.
+      class="text-light-base0B dark:text-dark-base0B underline">here</a
+    >.
   </ItemRow>
 
-  <ItemRow title="BlazeGuard.ai" link="https://devpost.com/software/blazeguard-ai">
-    Trained a ResNet 18-layer CNN on Canadian wildfire satellite images over
-    the last 30 years to predict wildfire outbreaks. Won 2nd place @ UCSD
+  <ItemRow
+    title="BlazeGuard.ai"
+    link="https://devpost.com/software/blazeguard-ai"
+  >
+    Trained a ResNet 18-layer CNN on Canadian wildfire satellite images over the
+    last 30 years to predict wildfire outbreaks. Won 2nd place @ UCSD
     DiamondHacks 2024.
+  </ItemRow>
+
+  <ItemRow title="Distributed ML Data Loading with gRPC">
+    Implemented a distributed data loading pipeline for
+    <a
+      href="https://www.cs.toronto.edu/~kriz/cifar.html"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">CIFAR-100</a
+    >
+    backed by gRPC microservices with proxy caching and configurable prefetching to
+    hide shard-latency. Added server-side data transformations selectable at runtime,
+    and used a custom PyTorch CIFAR100 dataset to stream transformed shards over gRPC
+    for training, with end-to-end deployment/testing on Kubernetes. Lab 4 project
+    for WI25 CSE 190. See technical report
+    <a
+      href="./papers/grpc_data_loading.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">here</a
+    >.
   </ItemRow>
 
   <!-- <ItemRow title="Taxi Predictor">
@@ -45,11 +97,14 @@ import ItemRow from "./ItemRow.astro";
 
   <ItemRow title="Successerator Android App">
     Developed interactive UI elements for an Android To-Do app in an 6 person
-    team with Agile Development. Used Java, Android Studio, JUnit, and
-    Espresso (UI Testing). Built for CSE 110.
+    team with Agile Development. Used Java, Android Studio, JUnit, and Espresso
+    (UI Testing). Built for CSE 110.
   </ItemRow>
 
-  <ItemRow title="Capacitive Touch Keyboard Software" link="https://github.com/Grace-Note-LLC/GraceNote">
+  <ItemRow
+    title="Capacitive Touch Keyboard Software"
+    link="https://github.com/Grace-Note-LLC/GraceNote"
+  >
     Developed cross-compatible UI to program custom-made touchpads for rhythm
     games. Built with ESP32 S3 microcontroller, Flet (Python wrapper for
     Flutter), pyautogui, and pyserial. Awarded the Best Project Demo Award by
@@ -59,20 +114,24 @@ import ItemRow from "./ItemRow.astro";
   <ItemRow title="REST API Error Handling">
     Conducted research on REST API error handling, creating a Flask-based web
     coding environment to collect data on how software engineers handle errors
-    to write code. Former research assistant at SALAD Lab @ UCSD under
-    Professor Coblenz.
+    to write code. Former research assistant at SALAD Lab @ UCSD under Professor
+    Coblenz.
   </ItemRow>
 
   <ItemRow title="TUAS Blog Writer">
-    I (used to) write posts about the Triton Unmanned Aerial Systems team and promote their brand on LinkedIn.
+    I (used to) write posts about the Triton Unmanned Aerial Systems team and
+    promote their brand on LinkedIn.
   </ItemRow>
 
   <ItemRow title="CSE Instructional Assistant">
-    Tutored CSE 11 @ FA23, CSE 29 @ SP24, CSE 8A @ FA24, CSE 29 @ SP25, CSE 8A @ FA25. Always paying it forward to our communities.
+    Tutored CSE 11 @ FA23, CSE 29 @ SP24, CSE 8A @ FA24, CSE 29 @ SP25, CSE 8A @
+    FA25. Always paying it forward to our communities.
   </ItemRow>
 
-  <ItemRow title="Linux For Quants" link="https://github.com/pink10000/linux-talk">
-    Gave a talk for UCSD's TQT in Fall 2025. 
+  <ItemRow
+    title="Linux For Quants"
+    link="https://github.com/pink10000/linux-talk"
+  >
+    Gave a talk for UCSD's TQT in Fall 2025.
   </ItemRow>
-
 </ul>

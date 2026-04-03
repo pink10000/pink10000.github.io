@@ -14,15 +14,26 @@ import ItemRow from "./ItemRow.astro";
     custom chess engine in C++. Uses the minimax algorithm with alpha-beta
     pruning. Won 1st place at Fall 2024 UCSD IEEE Quarterly Projects.
   </ItemRow>
+  
+  <ItemRow title="termail" link="https://github.com/pink10000/termail">
+    Architected a TUI email client implementing a plugin system via a custom WebAssembly (using the WASI component model) runtime for secure, sandboxed extension execution. Engineered a concurrent rendering pipeline to handle IMAP/SMTP network I/O asynchronously without blocking UI. Designed a modal-centric interface with ratatui, implementing vim-like keybindings for keyboard-only navigation. See technical report <a href="./papers/termail.pdf" target="_blank" rel="noopener noreferrer" class="text-light-base0B dark:text-dark-base0B underline">here</a>.
+  </ItemRow>
+
+  <ItemRow title="enclose.horse ILP Solver" link="https://github.com/pink10000/eh_ilp_solver">
+    Built an Integer Linear Programming (ILP) solver for the puzzle game 
+    <a href="https://enclose.horse" target="_blank" rel="noopener noreferrer" class="text-light-base0B dark:text-dark-base0B underline">enclose.horse</a>, reducing each level to a multi-commodity flow ILP that enforces global connectivity (avoiding disconnected "adversarial" enclosures) while handling game mechanics like portals and tile modifiers. Benchmarked on 12,689 puzzles, the solver matched the reported optimal score on 93.87% of levels and exceeded it on 5.33%, with a 0.354s median solve time on non-timeout cases. See technical report
+    <a
+      href="./papers/eh_ilp_solver.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline"
+    >here</a>.
+  </ItemRow>
 
   <ItemRow title="BlazeGuard.ai" link="https://devpost.com/software/blazeguard-ai">
     Trained a ResNet 18-layer CNN on Canadian wildfire satellite images over
     the last 30 years to predict wildfire outbreaks. Won 2nd place @ UCSD
     DiamondHacks 2024.
-  </ItemRow>
-
-  <ItemRow title="termail" link="https://github.com/pink10000/termail">
-    Architected a TUI email client implementing a plugin system via a custom WebAssembly (using the WASI component model) runtime for secure, sandboxed extension execution. Engineered a concurrent rendering pipeline to handle IMAP/SMTP network I/O asynchronously without blocking UI. Designed a modal-centric interface with ratatui, implementing vim-like keybindings for keyboard-only navigation. See technical report <a href="./papers/termail.pdf" target="_blank" rel="noopener noreferrer" class="text-light-base0B dark:text-dark-base0B underline">here</a>.
   </ItemRow>
 
   <!-- <ItemRow title="Taxi Predictor">
@@ -53,7 +64,7 @@ import ItemRow from "./ItemRow.astro";
   </ItemRow>
 
   <ItemRow title="TUAS Blog Writer">
-    I write posts about the Triton Unmanned Aerial Systems team and promote their brand on LinkedIn.
+    I (used to) write posts about the Triton Unmanned Aerial Systems team and promote their brand on LinkedIn.
   </ItemRow>
 
   <ItemRow title="CSE Instructional Assistant">

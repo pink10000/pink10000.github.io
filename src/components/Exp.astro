@@ -17,7 +17,14 @@ import ItemRow from "./ItemRow.astro";
   >
     A Chess bot running on low-power recycled IoT microcontroller units on a
     custom chess engine in C++. Uses the minimax algorithm with alpha-beta
-    pruning. Won 1st place at Fall 2024 UCSD IEEE Quarterly Projects.
+    pruning. Won
+    <a
+      href="https://ieee-qp-fa24.devpost.com/project-gallery"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">1st place</a
+    >
+    at Fall 2024 UCSD IEEE Quarterly Projects.
   </ItemRow>
 
   <ItemRow title="termail" link="https://github.com/pink10000/termail">
@@ -78,10 +85,32 @@ import ItemRow from "./ItemRow.astro";
     backed by gRPC microservices with proxy caching and configurable prefetching to
     hide shard-latency. Added server-side data transformations selectable at runtime,
     and used a custom PyTorch CIFAR100 dataset to stream transformed shards over gRPC
-    for training, with end-to-end deployment/testing on Kubernetes. Lab 4 project
-    for WI25 CSE 190. See technical report
+    for training, with end-to-end deployment/testing on Kubernetes. See technical
+    report
     <a
       href="./papers/grpc_data_loading.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">here</a
+    >.
+  </ItemRow>
+
+  <ItemRow title="Firefox Render Relay (F2R2)">
+    Developed a high-fidelity, privacy-focused remote browsing architecture by
+    streaming underlying WebRender drawing commands. F2R2 hooks directly into
+    Firefox's graphics pipeline to relay rendering state to a thin client.
+    Required extensive reverse-engineering of Mozilla's internal, Rust-based
+    debugging tool
+    <a
+      href="https://github.com/mozilla-firefox/firefox/tree/main/gfx/wr/wrench"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">wrench</a
+    >. We developed caching mechanisms and restored incremental resource loading
+    strategies, successfully resurrecting persistent text and dynamic image
+    rendering. See technical report
+    <a
+      href="./papers/f2r2.pdf"
       target="_blank"
       rel="noopener noreferrer"
       class="text-light-base0B dark:text-dark-base0B underline">here</a
@@ -119,8 +148,13 @@ import ItemRow from "./ItemRow.astro";
   </ItemRow>
 
   <ItemRow title="TUAS Blog Writer">
-    I (used to) write posts about the Triton Unmanned Aerial Systems team and
-    promote their brand on LinkedIn.
+    I (used to) write blog posts about the Triton Unmanned Aerial Systems team and
+    promote their brand on <a
+      href="https://www.linkedin.com/company/tritonuas/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">LinkedIn</a
+    >.
   </ItemRow>
 
   <ItemRow title="CSE Instructional Assistant">

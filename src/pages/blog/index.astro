@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Blog - kytrinh portfolio">
+  <div class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">Blog</h1>
+    
+    <div class="flex flex-col gap-6">
+      {posts.map((post) => (
+        <article class="p-6 border border-light-base02 dark:border-dark-base02 rounded-lg hover:border-light-base0D dark:hover:border-dark-base0D transition-colors">
+          <a href={`/blog/${post.id}/`} class="block">
+            <h2 class="text-2xl font-semibold mb-2 text-light-base0D dark:text-dark-base0D">{post.data.title}</h2>
+            <p class="text-sm text-light-base03 dark:text-dark-base04 mb-4">
+              {post.data.pubDate.toLocaleDateString('en-us', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </p>
+            <p>{post.data.description}</p>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

@@ -232,9 +232,32 @@ I never understood what it meant to be "smart" or "intelligient". As it turns ou
 I had to change. I needed to catch up. 
 
 # second year fall quarter (sep 2024)
-At this time, I seriously considered doing a double major in Mathemtatics (pure and applied). I "suffered" from imposter syndrome, feeling that I could not compete with other students who had focused on competition math in their youth. 
+At this time, I seriously considered doing a double major in Mathemtatics (pure, although applied was also on the table). 
 
-But I learned from MATH 184, that I could work/study/grind my way to success. My friends (new set) at the time suggested I take Abstract Algebra I, MATH 100A.
+To be perfectly honest, I was ragebaited into taking math courses (I suppose nerdsnipe is a better term?). My friends said:
+1. Computer Science is a fake degree! All you do is "import pytorch" and tune hyperparameters! Or import javascript library and connect frontend to backend! 
+2. You don't learn anything particularly useful in CS!
+3. I've already learned most of the material in high school and I thought it was boring. 
+4. CS is not rigorous!
+5. I think you're smart, you can do math.
+6. If you're so smart, why don't you do something that would actually challenge you!
+7. Math will train your brain to be better at {thinking about problems, analyzing problems, critical thinking, solving problems}.
+
+![nerdsniping](https://imgs.xkcd.com/comics/nerd_sniping.png)
+
+But most importantly, I think I believed that completing a math major or doing math courses would make my friends respect me. I'm a little ashamed to admit that such a superficial reason was my primary motivator, but I knew that the math dept was also pretty lenient. I was against doing a math major for a few reasons.
+
+- I felt that I was already behind my peers, not having done any competitive math in high school. I knew that this wasn't a prerequsitite for success, but I wanted to make the most out of my degree. Many of my CS/EE/CE + Math friends (not math-cs, that is an entirely different major) at the time had olympiad experience and were well decorated. Could I be like them? Did it matter?
+- There was also an inherent opportunity cost. If I spent time on math, it would take time away from my CS degree, potentially hindering my chances of employment. 
+- Money was also a factor; I felt bad having my parents pay for an extra year. 
+
+In hindsight, this was actually a very excellent decision. I would have graduated around 2024, right around when the new grad/intern job market for software engineers was at its lowest point
+
+> insert data 
+
+I learned from MATH 184, that I could work/study/grind my way to success. Fortunately, I did not have to decide yet. UCSD is quite lenient with class enrollment; you can freely enroll in classes beyond the typical 16 units most students take, so I could enroll in my base 16 (pun unintended) and enroll in exta courses.
+
+My friends (new set) at the time suggested I take Abstract Algebra I, MATH 100A.
 
 > First course in a rigorous three-quarter introduction to the methods and basic structures of higher algebra. Topics include groups, subgroups and factor groups, homomorphisms, rings, fields. (Students may not receive credit for both MATH 100A and MATH 103A.) Prerequisites: MATH 31CH or MATH 109 or consent of instructor. - [UCSD Math Catalog](https://catalog.ucsd.edu/courses/MATH.html#:~:text=Upper%20Division-,MATH%20100A,-.%20Abstract%20Algebra%20I). 
 
@@ -248,46 +271,95 @@ My class schedule was:
 - MATH 196 (Math Research Seminar)
 - ECON 109 (Game Theory)
 
-a total of 27 units. I also tutored CSE 11 (as part of 95), did a math seminar (196) and some form of research (CSE 291). 
+A total of 27 units. I also tutored [CSE 11](https://cse11fall2023.github.io/#/staff) (as part of 95), did a math seminar (196) and some form of research ([CSE 291](https://cseweb.ucsd.edu/~mcoblenz/teaching/291A00_fall2023/)). 
 
-I was determined to spend a ridiculous amount of time to become successful. It was not clear to me (at the time) what "success" was; I figured that if I could achieve the necessary skills to get a internship, I could get find some kind of post-grad success. 
+I was determined to spend a ridiculous amount of time to become successful. It was not clear to me (at the time) what "success" was; I figured that if I could achieve the necessary skills to get a internship, I could get find some kind of post-grad success. I spent maybe around 12-17 hours each day for 10 weeks, hoping that these insane hours would force me to work.
 
-I would say that this was my most impactful quarter at UCSD. I met an incredible number of people who I still consider friends today (May 2026) and I am grateful to have become friends with them. It taught me that I really, truly, could do anything I wanted so long as I set my mind to it. And that I had an uncountable number of friends to depend on when I needed them (and vice versa)
+I would say that this was my most impactful quarter at UCSD. I met an incredible number of people who I still consider close friends today. It taught me that I *really*, **truly**, could do anything I wanted so long as I set my mind to it. And that I had an uncountable number of friends to depend on when I needed them (and vice versa).
 
-MATH 100A was an extremely beautiful class. It was the first time where I could understand why math was so beautiful. You are given a collection of axioms, rules, and conventions. And you can apply them in such a way that you describe some very basic mathematical structures. Studying these structures yield very interesting results. The best way I could put it is:
+Tutoring was also a great experience. I was able to respond to ~130 Autograder tickets for the entire quarter (this was before LLMs took off, replacing tutors). As of writing this, I would consider myself close to \approx a quarter of my colleagues. 
 
-Imagine you are given a blank canvas and a few colors. This set of colors allows you to paint any kind of mural you could want. Once you've drawn enough, someone will come by and say, 
+[MATH 100A](https://mathweb.ucsd.edu/~jmckerna/Teaching/23-24/Autumn/100A/100A.html) was a beautiful class. It was the first time where I could understand why math was so beautiful. Most math in grade school is about following instructions, mechanically number crunching equations until you resolve an equal sign. It's not motivated why things work, just that there are numbers, addition, fractions, squares, spheres, permutations, complex numbers, derivatives...and so on. The reason why you study abstract algebra is quite interesting, and I urge you to read it [here](https://mathweb.ucsd.edu/~jmckerna/Teaching/23-24/Autumn/100A/100A.html).
 
-> Hey, I just got this new color you might want. It has sparkles in it. Also, feel free to use the backside.
+I think it's better to give an analogy. 
 
-Suddenly you can express a new class of art pieces, unlocked by this ability. And over time this person will come back say 
+Imagine you have been tasked (you may assume some omnipotent outer space aliens have delegated this to you) with visiting art museums (they really like art) your whole life. Everyday, you wake up, and your magical car (this analogy works with a bus, train, and other forms of mass transit) that never wears down and requires no fuel to operate, takes you to a new art museum. You can stare and read the descriptions, but sometimes they're in a different language, but it's fine because your job is to visit art museums. Of course we all die, and there are more art museums than the number of days a human lives on average (citation needed?). 
 
-> Here's a thinner brush. You can make finer details.
+Art museums don't appear out of nowhere; someone has to put them there. Maybe you could try "art".
 
-or 
+The alients provide you a blank canvas and and one oil-based paint of blue. They say you can paint whatever. So you pick up your brush gently swipe across the canvas, the hairs slowly losing their color as they leave less and less behind. 
 
-> Have you considered copying this style? Maybe you'll learn something new.
+Your new task is to paint. So you paint, paint, paint. Great, you made the sky. Great, you made the ocean. The aliens, bored, give you a new color. So you paint, paint, paint. They become bored, give you a new color or a new brush, and you paint, paint, paint. You draw countless murals. They illustrate everything: bears, trees, rivers, lunch from last week, a children's novel, ufo libraries, how you felt when that crow accompanied you for lunch, wonder...
 
-And you'll slowly be able to express yourself in ways not possible before. In a sense, this class allowed me to build a system of mathematical structures and tools that built upon one another (like a brick house). It was also satisfying to be able to understand these abstract objects in my head.
+Each time the aliens come back, you can express yourself in ways not possible before. 
 
-In particular, I begun to appreicate my education. I was given an (arguably) unique opportunity to **choose** how I spend my waking moments studying/learning about interesting/beautiful/useful topics. I was still concerned about my grades, but I held them in much less regard. 
+This class allowed me to build a system of mathematical structures and tools that built upon one. It was also satisfying to be able to understand these abstract objects in my head.
 
-Anyway, the stress eventually got to me and I never took this much workload again. I did submit a double major request for math.
+Importantly, I was beginning to appreicate the opportunity to go to school. I could choose want I wanted to learn about and do it. I was still concerned about my grades, but I held them in much less regard. 
+
+Anyway, the stress eventually got to me and I never took this much workload again. Despite doing well, I did not feel comfortable enough in applying for a double major.
+
+> 12/10/23, 8:11 PM
+> I didn't notice that the leaves starting falling today
+> first sunset I've seen in 9 weeks
+> unironically
+
+> 1/26/24, 10:32 AM
+> friend:
+> You’re gonna start talking about how their coding problem is trivial if you apply a group homomorphism
+> me:
+> cleverly crafted joke to poke fun at the fact math is an art degree
 
 # rest of second year
-This was kind of a blur. Winter quarter felt like it never happened, and eventually spring came around. I wanted to take some time away from my math degree and focus on the computer science part. 
+This was kind of a blur. Winter quarter was quite uneventful. I had no internship for the summer yet, so I kept working. My study partner for MATH 181A "Introduction to Mathematical Statistics I" inspired me to focus more on studying LeetCode (I made very little progress) and talked about his dreams and aspirations after college. It felt silly to me that I should be thinking about post grad, considering that it was ~2.5 years away and I had no idea what I wanted to do for my career. 
+
+I mean sure, I was going to do computer science, but what in cs? AI/ML seemed interesting; LLMs were a pretty exciting technology. I guessed I would be writing some kind of code, maybe in Java or C++. Definitely did not want to frontend work! 
+
+~~Another stressor at the time was~~. Actually, I think this was one of my more pleasant quarters. 
+
+> 2/16/24, 11:22 PM
+> just had a pizookie
+> they are mid
+> i just sent my double major req yesterday
+> it was rejected
+
+Spring quarter came and I wanted to take some time away from my math degree and focus on the computer science part. 
 
 The most impactful courses I took were
 - CSE 150B (Introduction to AI: Search and Reasoning)
 - CSE 224 (Graduate Networked Services)
+- CSE 120 (Operating Systems)
 
-I am very thankful that my friends suggested I take 224. It has been the most impactful course I've taken at UCSD, and every single interview I've had asked questions related to it. It was also the first time I was "significantly skill-gapped" by the other students there. The final project had a lower quartile of ~20-25% and about 1/5th of the class (50/200) was caught cheating. 
+I am very thankful that my friend suggested I take 224. Every single interview I've had has asked questions related to the material. It was also the first time I was "significantly skill-gapped" by the other students there. The final project had a lower quartile of ~20-25% and about 1/5th of the class (50/200) was caught with academic integrity violations. 
 
 Around this time I took up reading Atiyah's *Introduction to Commutative Algebra*, with some friends, under the guidance of a graduate student. This was a totally voluntary activity, something entirely unrelated to my career aspirations. 
 
-I also managed to find an internship at a biotech company for the summer. Very cool. 
+And out of nowhere,
+
+> 5/22/24, 1:30 PM
+> i got an internship offer
+
+and I got a resident assistant offer (figured out housing for next year!). PLUS I got my double major approved. 
+
+So life was good. But I still didn't really know what I wanted to do with my degree(s).
+
+## summer between 2nd and third year.
+I don't remember what I spent on with my first paycheck. I do remember thinking that work was pretty fun. In my free time I did some studying on Lean4 and Rust. I was getting involved in math research and the work was pretty interesting. 
+
+In the month before school, I wanted to work in something "not devops" (interesting, but becomes boring quickly). I decided that I would focus a significant amount of my time on preparing myself for interviews for the following summer.  
 
 # third year
+In third year, I took
+- CSE 127 (Intro to Computer Security)
+- CSE 151A (ML: Learning Algorithms)
+- MATH 160A (Mathematical Logic I)
+- MATH 20D (Ordinary Differential Equations)
+- MATH 199 (Math Research)
+- CSE 198 (CS Research)
+
+This was a good quarter. Computer security was interesting, machine learning was bad (all I will say about it!), 160A was ridiculously difficult, and diffeq was horrible. 
+
+I spent more time on my interests. My math research was primary on formalizing an important commutative algebra theorem In Lean4. My CS research was on applying Lean4 to formalize this textbook, Concrete Semantics. At the time I thought computerformalization would take off, imagine a world where all math theorems have been converted to Lean4 and formalized in some library. Maybe LLMs could generate code to formalize it too (this turned out to be a pretty accurate prediction). 
 
 
 

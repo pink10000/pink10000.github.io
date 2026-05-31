@@ -12,17 +12,28 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+// Calculate word count and read time
+const wordCount = post.body ? post.body.trim().split(/\s+/).length : 0;
+const readTime = Math.ceil(wordCount / 450);
+// see: https://catalog.shepherd.edu/mime/media/12/913/SU+Credit+Hour+Policy+Appendix+B.pdf 
 ---
 
 <Layout title={`${post.data.title} - Blog`}>
   <article class="max-w-3xl mx-auto px-4 py-8 prose dark:prose-invert prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base prose-a:text-light-base0D dark:prose-a:text-dark-base0D">
     <h1 class="mb-2">{post.data.title}</h1>
-    <p class="text-sm text-light-base03 dark:text-dark-base04 mt-0 mb-8">
-      {post.data.pubDate.toLocaleDateString('en-us', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })}
+    <p class="text-sm text-light-base03 dark:text-dark-base04 mt-0 mb-8 flex gap-2 items-center">
+      <span>
+        {post.data.pubDate.toLocaleDateString('en-us', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        })}
+      </span>
+      <span>&bull;</span>
+      <span>{wordCount} words</span>
+      <span>&bull;</span>
+      <span>{readTime} min read</span>
     </p>
     <div class="content">
       <Content />

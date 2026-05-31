@@ -4,6 +4,8 @@ description: "graduation"
 pubDate: "2026-05-28"
 ---
 
+## Table of Contents
+
 # why you are here
 hello. if you're here, you probably clicked on the link from linkedin or some other social media platform like discord or you found it randomly some number of years from now.
 

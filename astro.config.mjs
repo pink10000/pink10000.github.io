@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
 import remarkMath from "remark-math";
+import remarkToc from "remark-toc";
 import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
@@ -11,7 +12,7 @@ export default defineConfig({
   output: "static",
   integrations: [tailwind()],
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, [remarkToc, { heading: "table of contents", maxDepth: 3 }]],
     rehypePlugins: [rehypeKatex],
   },
   vite: {

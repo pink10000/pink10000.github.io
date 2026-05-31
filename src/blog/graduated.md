@@ -524,6 +524,18 @@ even when it was a bad matchup. I asked why. He explained that the idea is to me
 
 Anyway I don't feel like elaborating on this story anymore, but I think you get the idea.
 
+## taking math courses
+A lot of cs/swe folks glamorize mathematicians (and physics, and other "hard" sciences) and the work they do. I was (and still am?) one of those people. When underclassmen ask me for advice, I always tell them to take some math courses. 
+
+Looking back, I think this advice is hard to justify. I mean, I took a lot of math courses, and I don't think it really helped me get a job. It was fun, and I learned a lot, but it didn't really help me get an internship or a full time offer. 
+
+However, I will say that it did help me think more deeply about problems. It also helped me appreciate the beauty of math, and the way it can be used to model the world. I felt that I could understand cs problems better than my peers who didn't have a math background. In my opinion, math knowledge (beyond the basics like calculus and linear algebra) is not necessary for software engineering and this has a pretty poor [roi](https://en.wikipedia.org/wiki/Return_on_investment), but they have huge *potential* roi. It's just a lot harder to realize the benefits of a math education (i am saying this, knowing some pure/applied math majors who not doing grad school or some form of computing-adjacent job). 
+
+3rd year me would say, "if you have the time and resources, take some math courses! You'll learn how to think about problems better!".
+
+4th year me would say, "it's not really that important". 
+
+However, if I were to repeat college, I think would have still double majored in math (although I would spend more time on applied math courses to do scientific computing/engineering). 
 
 # addendum
 

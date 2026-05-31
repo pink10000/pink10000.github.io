@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Dark from '../../components/Dark.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -21,6 +22,10 @@ const readTime = Math.ceil(wordCount / 450);
 
 <Layout title={`${post.data.title} - Blog`}>
   <article class="max-w-3xl mx-auto px-4 py-8 prose dark:prose-invert prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base prose-a:text-light-base0D dark:prose-a:text-dark-base0D">
+    <div class="flex justify-between items-center mb-6 not-prose">
+      <a href="/blog" class="text-light-base0B dark:text-dark-base0B hover:underline">&larr; Back to blog</a>
+      <Dark />
+    </div>
     <h1 class="mb-2">{post.data.title}</h1>
     <p class="text-sm text-light-base03 dark:text-dark-base04 mt-0 mb-8 flex gap-2 items-center">
       <span>
@@ -37,6 +42,9 @@ const readTime = Math.ceil(wordCount / 450);
     </p>
     <div class="content">
       <Content />
+    </div>
+    <div class="mt-8 text-center not-prose">
+      <a href="#" class="text-light-base0B dark:text-dark-base0B hover:underline">&uarr; Back to top</a>
     </div>
   </article>
 </Layout>

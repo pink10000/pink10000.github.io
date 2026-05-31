@@ -15,7 +15,7 @@ const { Content } = await render(post);
 ---
 
 <Layout title={`${post.data.title} - Blog`}>
-  <article class="max-w-3xl mx-auto px-4 py-8 prose dark:prose-invert prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-a:text-light-base0D dark:prose-a:text-dark-base0D">
+  <article class="max-w-3xl mx-auto px-4 py-8 prose dark:prose-invert prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base prose-a:text-light-base0D dark:prose-a:text-dark-base0D">
     <h1 class="mb-2">{post.data.title}</h1>
     <p class="text-sm text-light-base03 dark:text-dark-base04 mt-0 mb-8">
       {post.data.pubDate.toLocaleDateString('en-us', {

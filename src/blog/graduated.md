@@ -46,7 +46,7 @@ i competed in the geography bee and i got first palce and i did not study. but m
 
 i think around this tiem i gained consciousness. not once had i considered (this is a lie.) that my actions could affect someone like this. and my teacher was wright. she was my friend and i made her cry because she studied for this and couldnt make it. was she stupid? was she dumb?
 
-middle school comes by, and i take an honors math course. this is the first time where i was humbled. it was a math class that combined 7th and 8th grade in 1/3rd of a year. i dont know if i ever really liked math up to this point. it wasnt clear what the purpose of learning algebra was or what a variable was. after all, i thought it was just flash cards and writing down numbers fast because you can do 6*7=42 in your head. 
+middle school comes by, and i take an honors math course. this is the first time where i was humbled. it was a math class that combined 7th and 8th grade in 1/3rd of a year. i dont know if i ever really liked math up to this point. it wasnt clear what the purpose of learning algebra was or what a variable was. after all, i thought it was just flash cards and writing down numbers fast because you can do $6 \cdot 7=42$ in your head. 
 
 two memories i have that sticks with me is that i wanted to become nuclear engineer. we had to make poster of what career we wanted. what is a career? what does it mean to want to have a career? what is an engineer? it's what my dad does, and he says it's good money, so i guess i'll be an engineer. what is money? 
 

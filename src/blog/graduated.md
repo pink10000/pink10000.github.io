@@ -349,6 +349,8 @@ I don't remember what I spent on with my first paycheck. I do remember thinking 
 In the month before school, I wanted to work in something "not devops" (interesting, but becomes boring quickly). I decided that I would focus a significant amount of my time on preparing myself for interviews for the following summer.  
 
 # third year
+
+## autumn (fall)
 In third year, I took
 - CSE 127 (Intro to Computer Security)
 - CSE 151A (ML: Learning Algorithms)
@@ -361,11 +363,61 @@ This was a good quarter. Computer security was interesting, machine learning was
 
 I spent more time on my interests. My math research was primary on formalizing an important commutative algebra theorem In Lean4. My CS research was on applying Lean4 to formalize this textbook, Concrete Semantics. At the time I thought computerformalization would take off, imagine a world where all math theorems have been converted to Lean4 and formalized in some library. Maybe LLMs could generate code to formalize it too (this turned out to be a pretty accurate prediction). 
 
+Fall was pretty uneventful. I did secure an internship for next summer in December.
 
+## winter (fall v2)
+MATH 140A is the hardest class I have taken. It is the math department's Honors Real Analysis in Rudin. Some perspective:
+- I spent approximately 30-40 hours each week on this class.
+- My colleagues were very intelligient people. There were folks from other majors (bioengineering, eletrical engineer, computer engineering, computer science, linguistics...). 
+- 74 students were enrolled in Week 1
+- 42 students were enrolled in Week 3
+- 36 students took the final
+- Only students who plan to do a Math PhD are recommended to take this class. 
+- Without curve, only one person passed.
 
+By the end of the class, I think we had one big study group with 10-12 people in it. There is friendship in collective suffering.
+
+## spring
+Spent a lot of time working on keyboards, water bottles, and dealing with tariffs. Got into grad school. 
+
+The biggest thing I learned was that engineering is hard. Real engineering is hard. My friends Samir, Anthony, and Cody took CSE 145/237D. The goal of the class is to build some embedded systems project and write about it. We decided to built a smart water bottle with an eink display.
+
+There's so much that needs to go into a smart water bottle. 
+1. All the eletronics need to be kept inside a secure, waterproof container. 
+2. The water bottle needs to be battery powered, so it must provide a way for the user to replace the battery WHILE ensuring (1).
+3. The eink display needs to show useful information and needs to be protected from water.
+4. We had various sensors that protrude from the cap into the container to measure the water.
+5. The water bottle needed to have bluetooth functionality. 
+6. Cheap.
+
+I found out:
+- Buying american-made products is expensive. They also took a long time to build and ship. 
+- Working with Eink displays is hard. The spec sheet was mixed between Chinese and English, with a lot of missing or undecipherable information. 
+- Mass manufacturing is magic. How does one produce 10,000 aluminum water bottles as cheaply and efficiently as possible? Even if we assume a very bad water bottle like a soda can, you need to:
+    - source the materials
+    - ship the materials
+    - refine the materials
+    - buy machines to do all the above
+    - make sure the machines dont break, and when they do, fix them 
+    - make a design
+    - print/build the design
+    - realize the design is poor, so you have to redo it
+    - have a machine that molds/cuts/assembles the bottles together. 
+- Supply chains are unbelievably complex. It is a miracle they work at all.
+- Cost is not the only reason american manufacturing will never take off.
+- Writing firmware is difficult. Iteration times are much longer than software. 
+- You are reliant on vendors providing correct information (if any).
+- Any kind of engineering requires a team with a wide variety of skills. One person cannot know the entire stack from the bottom up. Big project -> many teams -> how do these teams talk to each other? hierarchial doesn't sound efficient -> product manager. 
+
+I also built the [Charybdis](https://bastardkb.com/charybdis) keyboard (after ordering the DIY kit). 3D printing is so hard. I probably reduced my lifespan by a few years resin printing the keycaps for this. In the end, I ended up purchasing a basic set off of Amazon. 
+
+I was pretty content in life. I managed to achieve every single goal I set out to do. Looking back, I think my 1st and 2nd year self would have admired 3rd year me. 
 
 
 # fourth year
+I'm so old. I feel so old. Everyday I wander the CSE basement, hoping to catch a glimpse of any of my friends who have not graduated yet. 
+
+
 
 
 # retirement (grad school)
@@ -376,6 +428,17 @@ jacob tooy: ermm asckahaully....
 
 # lessons?
 
+So I am supposed to write about the stuff I learned. Okay. I guess you could just read the story and find out what I learned. Or maybe you can Ctrl+ACV into your favorite LLM of choice and get a good response. 
+
+But someone once asked me, how do I do it. Looking back I think it was ego. I mean, I had no reason to take math 140a. I had no plans to do a math phd, nor did I think I was cut out to do math research. The concept of a "phd" was entirely foriegn me. But I took the class anyway because I thought I could pass it. 
+
+One day I was walking home from the library, stressing about tomorrow's midterm. There was no way I going to pass. After some reflection, I could not remember when I last failed.
+
+When was the last time you failed? Specifically, when was the last time you seriously failed at doing something that was entirely (or mostly) in your control either because you were legitimately incompetent or lazy (or something else, but I'm blanking on a good adjective that would satisfy the rule of 3)? 
+
+I could not remember! I will succeed because I have always succeeded. Why would tomorrow be any different? Why does it matter? If I fail, I fail, so be it. 
+
+You must be unwavering. You cannot waver. You cannot falter. You cannot event think in the slightest that you can fail. Because if you think you can fail, you worry and you stress. And that stops you from succeeding. 
 
 
 # advice?

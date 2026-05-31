@@ -516,6 +516,8 @@ Okay, that sounds like something you'd find in a book for CEOs titled "The Art o
 
 even when it was a bad matchup. I asked why. He explained that the idea is to mentally prepare him for each game so he can play at his best. 
 
+Anyway I don't feel like elaborating on this story anymore, but I think you get the idea.
+
 
 # addendum
 

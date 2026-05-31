@@ -52,9 +52,9 @@ middle school comes by, and i take an honors math course. this is the first time
 
 two memories i have that stick with me is that i wanted to become nuclear engineer. we had to make poster of what career we wanted. what is a career? what does it mean to want to have a career? what is an engineer? it's what my dad does, and he says it's good money, so i guess i'll be an engineer. what is money? 
 
-another memory is that this girl forgot to do her project the night before. and she sat behind me. and she cried about it during class. i felt bad. she was smart and because of this, her grade tanked. i dont know if it was her fault, but for some reason i remember this. i think her name was ava. (spell ava backwards).
+another memory is that this girl forgot to do her project the night before. and she sat behind me. and she cried about it during class. i felt bad. she was smart and because of this, her grade tanked. i dont know if it was her fault, but for some reason i remember this.
 
-so i got an A- in that class, and i was proud of myself because i worked hard to get that grade. 8th grade comes and we have this silly teacher who all the parents hate because they are nonbinary and go by mx. but honestly, they really weren't a good teacher either. i remember she used to step on the students' desks and talk about how beautiful math was. i never really considered flash cards and memorization and rocketmath and algebra to be beautiful. these are things i have to do to get respect from my peers and my parents. why would they be beautiful? who cares? math is easy; why would i think of it like art. 
+so i got an A- (in my school, an A- was equivalent to a 4.0 gpa. a B+/B/B- was a 3.0, and so on) in that class, and i was proud of myself because i worked hard to get that grade. 8th grade comes and we have this math teacher who all the parents hate because they are nonbinary and they're scared they'll indoctrinate us with blah blah blah. but honestly, they really weren't a good teacher either. i remember she used to step on the students' desks and talk about how beautiful math was. i never really considered flash cards and memorization and rocketmath and algebra to be beautiful. these are things i have to do to get respect from my peers and my parents. why would they be beautiful? who cares? math is easy; why would i think of it like art. 
 
 anyway, that class was interesting, and band was interesting, and other things in my life were more interesting. history was cool; i learned about the us civil war and rome and other religions and science; i learned some basic biology which was cool. none of these subjects seemed particularly beautiful, but i was good at them, and my grades were As, so who cared. i went to school, i did my work, i hung out with friends, i ate my lunch, i did my homework, i got good grades, i did my tests, i got good grades, and my report cards said i got As and A minuses. 
 
@@ -189,7 +189,11 @@ And summer ended, and one of my friends who(m) I met on Discord, said he just fi
 
 
 # my first year 
-My primary goal in college was to grind as many courses as possible, per quarter, and graduate my degree as fast as possible. From my 4 year plan, I estimated that I could finish college in about 2 years. 
+My primary goal in college was to grind as many courses as possible, per quarter, and graduate my degree as fast as possible. From my 4 year plan, I estimated that I could finish college in about 2 years. I don't remember what exactly motivated this, but
+1. College was expensive and I felt bad making my parents pay for it.
+2. Some of my friends were speedrunning their degree and I didn't want to feel left out.
+3. Your enrollment time is based on the number of units you have. More units = easier to get classes.
+4. Speedrunning early classes meant I could get to the more interesting topics sooner.
 
 Once I was done, I could find a good, high paying job, and work that for the rest of my life. And I would have a good life. 
 

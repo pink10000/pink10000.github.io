@@ -12,12 +12,12 @@
   const lightButton =
     '<span class="material-icons-outlined block text-base">light_mode</span>';
 
-  // Load saved theme
-  const savedTheme = localStorage.getItem("theme");
   if (toggleButton) {
-    if (savedTheme) {
-      rootElement.classList.add(savedTheme);
-      toggleButton.innerHTML = savedTheme === "dark" ? darkButton : lightButton;
+    // Initialize button state based on the class set by Layout.astro
+    if (rootElement.classList.contains("dark")) {
+      toggleButton.innerHTML = lightButton;
+    } else {
+      toggleButton.innerHTML = darkButton;
     }
 
     // Function to switch theme

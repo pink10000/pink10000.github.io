@@ -232,6 +232,10 @@ I never understood what it meant to be "smart" or "intelligient". As it turns ou
 I had to change. I needed to catch up. 
 
 # second year fall quarter (sep 2024)
+In my first year, I met a 4th year (he's doing a PhD now!) who gave me some advice: 
+
+> You should do everything. Become multidisciplinary. You never know what fields need software engineers. You'll open many doors and meet all kinds of people!
+
 At this time, I seriously considered doing a double major in Mathemtatics (pure, although applied was also on the table). 
 
 To be perfectly honest, I was ragebaited into taking math courses (I suppose nerdsnipe is a better term?). My friends said:
@@ -299,16 +303,16 @@ Importantly, I was beginning to appreicate the opportunity to go to school. I co
 
 Anyway, the stress eventually got to me and I never took this much workload again. Despite doing well, I did not feel comfortable enough in applying for a double major.
 
-> 12/10/23, 8:11 PM
-> I didn't notice that the leaves starting falling today
-> first sunset I've seen in 9 weeks
-> unironically
+> 12/10/23, 8:11 PM  
+> I didn't notice that the leaves starting falling today  
+> first sunset I've seen in 9 weeks  
+> unironically  
 
-> 1/26/24, 10:32 AM
-> friend:
-> You’re gonna start talking about how their coding problem is trivial if you apply a group homomorphism
-> me:
-> cleverly crafted joke to poke fun at the fact math is an art degree
+> 1/26/24, 10:32 AM  
+> friend:  
+> You’re gonna start talking about how their coding problem is trivial if you apply a group homomorphism  
+> me:  
+> cleverly crafted joke to poke fun at the fact math is an art degree  
 
 # rest of second year
 This was kind of a blur. Winter quarter was quite uneventful. I had no internship for the summer yet, so I kept working. My study partner for MATH 181A "Introduction to Mathematical Statistics I" inspired me to focus more on studying LeetCode (I made very little progress) and talked about his dreams and aspirations after college. It felt silly to me that I should be thinking about post grad, considering that it was ~2.5 years away and I had no idea what I wanted to do for my career. 
@@ -317,11 +321,11 @@ I mean sure, I was going to do computer science, but what in cs? AI/ML seemed in
 
 ~~Another stressor at the time was~~. Actually, I think this was one of my more pleasant quarters. 
 
-> 2/16/24, 11:22 PM
-> just had a pizookie
-> they are mid
-> i just sent my double major req yesterday
-> it was rejected
+> 2/16/24, 11:22 PM  
+> just had a pizookie  
+> they are mid  
+> i just sent my double major req yesterday  
+> it was rejected  
 
 Spring quarter came and I wanted to take some time away from my math degree and focus on the computer science part. 
 
@@ -411,12 +415,52 @@ I found out:
 
 I also built the [Charybdis](https://bastardkb.com/charybdis) keyboard (after ordering the DIY kit). 3D printing is so hard. I probably reduced my lifespan by a few years resin printing the keycaps for this. In the end, I ended up purchasing a basic set off of Amazon. 
 
-I was pretty content in life. I managed to achieve every single goal I set out to do. Looking back, I think my 1st and 2nd year self would have admired 3rd year me. 
+Went to SCaLE (SoCal Linux Expo) in Pasadena. 
+
+I was pretty content in life. Looking back, I think my 1st and 2nd year self would have admired 3rd year me. 
 
 
 # fourth year
-I'm so old. I feel so old. Everyday I wander the CSE basement, hoping to catch a glimpse of any of my friends who have not graduated yet. 
+I'm so old. I feel so old. Most of my friends have already graduated at this point. I used to spend long hours in the CSE basement. If you stayed there long enough, you'd bump into the same people all the time. I would call them "basement goblins" (for the record I was one too). 
 
+In fourth year, I spent a lot of time wandering in the CSE basement, hoping to find someone I recognized from previous years. Sometimes this was successful and I could study with them in b250. 
+
+Reflecting on my previous years, I achieved all the goals I set out to do, even before my second year.
+1. get an internship 
+2. get an internship outside san diego
+3. explore cs research 
+4. explore math research 
+5. travel san diego 
+6. travel with my own money (did this in March!)
+7. graduate with a double major
+8. make a lot of friends
+9. mentor underclassmen (i am a big believer in paying it forward)
+10. work on projects with friends (did so many)
+11. complete MATH 100AB, MATH 140AB
+12. visit/enter every ucsd building
+13. tutor 
+14. eat a lot of vallarta
+15. win a hackathon
+
+What do you do when you accomplish all your goals? I was satisfied, but I felt that there was a lot more I could have done. 
+
+<!-- For awhile, I regretted not doing electrical engineering or more math, or physics. -->
+
+When I accomplished these goals, I didn't really celebrate. It felt like something I *had* to do as part of my degree. I don't think I was the one that set these goals for myself. I mean, in today's job market, it's kind of impossible (very difficult) to get a full time offer post grad without some form of an internship. 
+
+By default, goal `1` (and by extension goal `2`) are not really goals, but part of my degree. Goals `3` and `4` were something many upperclassmen told me I had to do because UCSD is a [good research school](https://csrankings.org). 
+
+Goals `5` and `6` could be completed without going to college. 
+
+I celebrated goal `7`, `10`, and `11`. For the past few months I felt that I seriously did hurt my employment opportunities because I spent time on math instead of cs. I think to some degree, my initial fear came true; however, I think goal `11` was something **I** wanted to do. I remember telling my father that I would pass this class, and I was doing it to prove myself I could. If I didn't do those four classes, I don't think I would have meaningfully achieved `7` (this is not to say you aren't a real math major if you didn't take those four classes). 
+
+`8` was not particularly difficult. Some people have asked me why "I know everyone" (I definitely knew *of* many folks, but I don't think I can claim being friends with them). My advice:
+
+Let $G = (V, E)$
+
+
+My advice:
+- One easy way to make friends is to be really good at something and have been well known (DO NOT GLOAT!). 
 
 
 

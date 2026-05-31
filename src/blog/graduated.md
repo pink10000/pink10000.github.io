@@ -441,6 +441,7 @@ Reflecting on my previous years, I achieved all the goals I set out to do, even 
 13. tutor 
 14. eat a lot of vallarta
 15. win a hackathon
+16. Finish a Daniel Kane course
 
 What do you do when you accomplish all your goals? I was satisfied, but I felt that there was a lot more I could have done. 
 
@@ -452,29 +453,52 @@ By default, goal `1` (and by extension goal `2`) are not really goals, but part 
 
 Goals `5` and `6` could be completed without going to college. 
 
-I celebrated goal `7`, `10`, and `11`. For the past few months I felt that I seriously did hurt my employment opportunities because I spent time on math instead of cs. I think to some degree, my initial fear came true; however, I think goal `11` was something **I** wanted to do. I remember telling my father that I would pass this class, and I was doing it to prove myself I could. If I didn't do those four classes, I don't think I would have meaningfully achieved `7` (this is not to say you aren't a real math major if you didn't take those four classes). 
+I celebrated goal `7`, `10`, `11`, and `16`. For the past few months I felt that I seriously did hurt my employment opportunities because I spent time on math instead of cs. I think to some degree, my initial fear came true; however, I think goal `11` was something **I** wanted to do. I remember telling my father that I would pass this class, and I was doing it to prove myself I could. If I didn't do those four classes, I don't think I would have meaningfully achieved `7` (this is not to say you aren't a real math major if you didn't take those four classes). Goal `16` was because DK is famous and is known for having hard classes.
 
-`8` was not particularly difficult. Some people have asked me why "I know everyone" (I definitely knew *of* many folks, but I don't think I can claim being friends with them). My advice:
-
-Let $G = (V, E)$
-
+`8` was not particularly difficult. Some people have asked me why "I know everyone" (I definitely knew *of* many folks, but I don't think I can claim being friends with them). 
 
 My advice:
-- One easy way to make friends is to be really good at something and have been well known (DO NOT GLOAT!). 
+- I think try to make friends with only people who are "cracked" is a bad idea. 
+- Network effects are really important. A lot of my friends are "friends of friends". 
+- An easy way to expose yourself to more people is to get really good at something and have it be well known (DO NOT GLOAT!). 
+- If you see someone you know, say hi! One habit I have is always scanning a room or some visual area to see if I recognize anyone. 
+- Get in situations where you can interact with people. Some algorithms will call this "expanding the frontier". Expanding your frontier (people you know of) will lead to more friendships.
+- Making connections to "network" usually doesn't work in my experience. People will want to "network" with you if you also have something of substance.
+- Be yourself. 
+- Goal `9` and `10` helps!
+- There is friendship in suffering. Taking a hard class and joining a study group helps. 
 
-
-
-# retirement (grad school)
-
-
-
-jacob tooy: ermm asckahaully.... 
+The rest of the goals were trivial. 
 
 # lessons?
 
-So I am supposed to write about the stuff I learned. Okay. I guess you could just read the story and find out what I learned. Or maybe you can Ctrl+ACV into your favorite LLM of choice and get a good response. 
+So I am supposed to write about the stuff I learned. Okay. I guess you could just read the story and figure it out yourself. Or maybe you can Ctrl+ACV into your favorite LLM of choice and get a good response. Honestly, I don't think this blog post provides much substance.
 
-But someone once asked me, how do I do it. Looking back I think it was ego. I mean, I had no reason to take math 140a. I had no plans to do a math phd, nor did I think I was cut out to do math research. The concept of a "phd" was entirely foriegn me. But I took the class anyway because I thought I could pass it. 
+Someone once asked me, how do I do it. How can I balance taking many classes, social life, and sleep. There's this famous [triangle](https://pearce.caah.clemson.edu/debunking-college-triangle-finding-balance-three-points/):
+
+![image](https://i0.wp.com/pearce.caah.clemson.edu/wp-content/uploads/2018/11/College_Triangle.jpg?resize=402%2C292&ssl=1)
+
+One trick I learned was that you can force academics and social life to be closer to each other. In particular, if you surround yourself with like-minded individuals (grind above all), it's easier for them to understand if you can't attend a hangout (atlhough in >80% of cases, you should go hang out with them) or will work with you. Many of my friends were from study groups I met from Discord or from classes that prioritized group projects. 
+
+Sleep is non-negotiable. I realized I needed a minimum of 7 hours of sleep, and anything less than 6.5 will mess up my week. (I suppose you could abuse caffeine,,,). 
+
+My website's motto is 
+
+> obsession > discipline > motivation
+
+Motivation is fake. Many times I was motivated to take a class or work on some sideproject, but I was never able to finish. Most things worth doing are not easy, and you might not have the motivation to do it. 
+
+You need to be disciplined. I was only able to handle heavy course loads because I was disciplined. Wake up, lock in, eat, shower (optional), lock in, sleep. 
+
+> If he cared enough, he'd do it for you. 
+
+If you've been around on the internet, you may have heard the above phrase. We can apply this same principle to discpline. If you really cared about your class/project/employment/friendships/... you'd find a way.
+
+I spent a lot of time in first year talking to many talented students. There were many things all of them had in common, but I remember that everyone was obsessed with something. Everyone was engrossed in their niche and were always willing to talk about it. If you're constantly thinking of something, you're already half way there!
+
+I think a lot of my school/career decisions were because of ego. I mean, I had no reason to take 140a. I had no plans to do a math phd, nor did I think I was cut out to do math research. The concept of a "phd" was entirely foriegn me. But I took the class anyway because I thought I could pass it. I didn't need to take so many classes each quarter (I graduated 1 quarter earlier). 
+
+Okay, maybe it's not actually ego. Arrogance? Courage? Narcissism (clout chasing)? 
 
 One day I was walking home from the library, stressing about tomorrow's midterm. There was no way I going to pass. After some reflection, I could not remember when I last failed.
 
@@ -482,7 +506,17 @@ When was the last time you failed? Specifically, when was the last time you seri
 
 I could not remember! I will succeed because I have always succeeded. Why would tomorrow be any different? Why does it matter? If I fail, I fail, so be it. 
 
-You must be unwavering. You cannot waver. You cannot falter. You cannot event think in the slightest that you can fail. Because if you think you can fail, you worry and you stress. And that stops you from succeeding. 
+> unwavering (adj.): continuing in a strong and steady way
+
+You must be unwavering. Be stupid about it. Can't do something? Yes you can. Go do it.
+
+Okay, that sounds like something you'd find in a book for CEOs titled "The Art of Business Execution: A Path to Glory". I knew a LoL player who was briefly top 10 in North America and one of the best players in the world for his champion. Every game, he would say 
+
+> ez win
+
+even when it was a bad matchup. I asked why. He explained that the idea is to mentally prepare him for each game so he can play at his best. 
 
 
-# advice?
+# addendum
+
+thank you to the friends who helped write this. 

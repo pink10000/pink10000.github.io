@@ -3,7 +3,10 @@ title: "rating every class i've taken"
 description: "An interactive analysis of my college courses"
 pubDate: "2026-06-01"
 ---
+import CourseHeatmap from '../components/CourseHeatmap.astro';
 import CourseRadar from '../components/CourseRadar.astro';
+import QuarterBarChart from '../components/QuarterBarChart.astro';
+import CategorySumChart from '../components/CategorySumChart.astro';
 import CourseTable from '../components/CourseTable.astro';
 import SubjectRadar from '../components/SubjectRadar.astro';
 
@@ -29,8 +32,11 @@ Since it's unfair to judge a class I took early on the same scale as a class I t
 
 <div class="my-12 flex flex-col gap-6 not-prose">
   <CourseTable />
+  <CourseHeatmap />
   <CourseRadar />
   <SubjectRadar />
+  <QuarterBarChart />
+  <CategorySumChart />
 </div>
 
 ---

@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+import typography from '@tailwindcss/typography';
 
 // uses Oxocarbon Colorscheme
 // https://github.com/nyoom-engineering/base16-oxocarbon
-module.exports = {
+export default {
   darkMode: "class",
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}", "./public/**/*.html"],
   theme: {
@@ -55,6 +56,6 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
   ],
 };

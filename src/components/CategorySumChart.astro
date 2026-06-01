@@ -1,0 +1,231 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { getTermScore } from '../utils/termSort.js';
+import ChartCard from './ChartCard.astro';
+import tailwindConfig from '../../tailwind.config.mjs';
+
+// Load and parse the CSV data server-side
+const csvPath = path.resolve('./src/blog/classes.csv');
+const csvContent = fs.readFileSync(csvPath, 'utf-8');
+
+// Parse the CSV
+const rows = csvContent.trim().split('\n');
+const classesData = rows.slice(1).map(row => {
+  let inQuotes = false;
+  let currentField = '';
+  const fields = [];
+  
+  for (let i = 0; i < row.length; i++) {
+    const char = row[i];
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      fields.push(currentField);
+      currentField = '';
+    } else {
+      currentField += char;
+    }
+  }
+  fields.push(currentField);
+  
+  return {
+    term: fields[0],
+    units: parseFloat(fields[4] || '4'),
+    usefulness: parseInt(fields[5] || '5', 10),
+    enjoyment: parseInt(fields[6] || '5', 10),
+    workload: parseInt(fields[7] || '5', 10),
+    difficulty: parseInt(fields[8] || '5', 10),
+    skipability: parseInt(fields[9] || '5', 10),
+  };
+});
+
+// Group by Term and calculate SUM for all categories
+const termGroups = {};
+classesData.forEach(cls => {
+  if (!termGroups[cls.term]) {
+    termGroups[cls.term] = { 
+      term: cls.term, 
+      enjoyment: 0,
+      usefulness: 0,
+      workload: 0,
+      difficulty: 0,
+      skipability: 0
+    };
+  }
+  termGroups[cls.term].enjoyment += (cls.enjoyment * cls.units);
+  termGroups[cls.term].usefulness += (cls.usefulness * cls.units);
+  termGroups[cls.term].workload += (cls.workload * cls.units);
+  termGroups[cls.term].difficulty += (cls.difficulty * cls.units);
+  termGroups[cls.term].skipability += (cls.skipability * cls.units);
+});
+
+const quarterSums = Object.values(termGroups);
+
+// Sort chronologically (Years then Quarters SU -> FA -> WI -> SP)
+quarterSums.sort((a, b) => getTermScore(a.term) - getTermScore(b.term));
+
+const darkColors = tailwindConfig.theme.extend.colors.dark;
+const lightColors = tailwindConfig.theme.extend.colors.light;
+---
+
+<category-sum-chart data-sums={JSON.stringify(quarterSums)} data-dark={JSON.stringify(darkColors)} data-light={JSON.stringify(lightColors)} class="block w-full">
+  <ChartCard title="Quarterly Category Sums" subtitle="The absolute sum of points for every class taken in a quarter, weighted by the number of units the class is worth.">
+    <div slot="actions" class="relative">
+      <select id="metricSelect" class="appearance-none bg-light-base01 dark:bg-dark-base01 border border-light-base02 dark:border-dark-base02 text-light-base05 dark:text-white py-2 pl-4 pr-10 hover:border-light-base03 dark:hover:border-dark-base03 focus:outline-none focus:ring-1 focus:ring-light-base0E dark:focus:ring-dark-base0E transition-colors cursor-pointer text-sm font-semibold shadow-sm rounded">
+        <option value="workload">Workload</option>
+        <option value="enjoyment">Enjoyment</option>
+        <option value="usefulness">Usefulness</option>
+        <option value="difficulty">Difficulty</option>
+        <option value="skipability">Skipability</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-light-base04 dark:text-dark-base04">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+      </div>
+    </div>
+
+    <div class="relative w-full h-[350px]">
+      <canvas id="categorySumChart"></canvas>
+    </div>
+  </ChartCard>
+</category-sum-chart>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  class CategorySumChart extends HTMLElement {
+    connectedCallback() {
+      requestAnimationFrame(() => {
+        this.initChart();
+      });
+    }
+
+    initChart() {
+      const sumsData = JSON.parse(this.dataset.sums);
+      const darkColors = JSON.parse(this.dataset.dark);
+      const lightColors = JSON.parse(this.dataset.light);
+      const canvasCtx = this.querySelector('#categorySumChart');
+      const selector = this.querySelector('#metricSelect');
+
+      if (canvasCtx && selector) {
+        let barChart;
+        let currentMetric = selector.value;
+
+        const updateChart = () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          
+          // Theme Colors
+          const theme = isDark ? darkColors : lightColors;
+          const textColor = isDark ? theme.base04 : theme.base02; 
+          const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+          
+          const hexToRgba = (hex, alpha) => {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+          };
+          
+          // 5 Distinct Colors dynamically loaded from Tailwind
+          const colorPalette = {
+            enjoyment: theme.base0A,
+            usefulness: theme.base0B,
+            workload: theme.base0C,
+            difficulty: theme.base0D,
+            skipability: theme.base0E
+          };
+
+          const bgPalette = {
+            enjoyment: hexToRgba(theme.base0A, 0.5),
+            usefulness: hexToRgba(theme.base0B, 0.5),
+            workload: hexToRgba(theme.base0C, 0.5),
+            difficulty: hexToRgba(theme.base0D, 0.5),
+            skipability: hexToRgba(theme.base0E, 0.5)
+          };
+
+          const accentColor = colorPalette[currentMetric];
+          const bgColor = bgPalette[currentMetric];
+          const metricLabel = currentMetric.charAt(0).toUpperCase() + currentMetric.slice(1);
+          
+          const labels = sumsData.map(q => q.term);
+          const dataPoints = sumsData.map(q => q[currentMetric]);
+
+          const chartData = {
+            labels: labels,
+            datasets: [
+              {
+                label: `Total ${metricLabel} Sum`,
+                data: dataPoints,
+                backgroundColor: bgColor,
+                borderColor: accentColor,
+                borderWidth: 2,
+                borderRadius: 4
+              }
+            ]
+          };
+
+          if (barChart) {
+            barChart.data = chartData;
+            barChart.options.scales.x.grid.color = gridColor;
+            barChart.options.scales.y.grid.color = gridColor;
+            barChart.options.scales.x.ticks.color = textColor;
+            barChart.options.scales.y.ticks.color = textColor;
+            barChart.options.plugins.legend.labels.color = textColor;
+            barChart.update();
+          } else {
+            barChart = new Chart(canvasCtx, {
+              type: 'bar',
+              data: chartData,
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  x: {
+                    grid: { display: false },
+                    ticks: { color: textColor, font: { weight: 'bold' } }
+                  },
+                  y: {
+                    beginAtZero: true,
+                    grid: { color: gridColor },
+                    ticks: { color: textColor }
+                  }
+                },
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  tooltip: {
+                    backgroundColor: isDark ? 'rgba(38, 38, 38, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+                    titleColor: isDark ? '#ffffff' : '#161616',
+                    bodyColor: isDark ? '#dde1e6' : '#525252',
+                    padding: 12,
+                    cornerRadius: 4,
+                    displayColors: false
+                  }
+                }
+              }
+            });
+          }
+        };
+
+        // Initialize chart
+        updateChart();
+
+        // Handle selection change
+        selector.addEventListener('change', (e) => {
+          currentMetric = e.target.value;
+          updateChart();
+        });
+
+        // Watch for theme changes to re-render chart colors
+        const observer = new MutationObserver(() => updateChart());
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      }
+    }
+  }
+
+  // Register custom element
+  if (!customElements.get('category-sum-chart')) {
+    customElements.define('category-sum-chart', CategorySumChart);
+  }
+</script>

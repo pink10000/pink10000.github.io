@@ -1,0 +1,214 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { getTermScore } from '../utils/termSort.js';
+import ChartCard from './ChartCard.astro';
+import tailwindConfig from '../../tailwind.config.mjs';
+
+// Load and parse the CSV data server-side
+const csvPath = path.resolve('./src/blog/classes.csv');
+const csvContent = fs.readFileSync(csvPath, 'utf-8');
+
+// Parse the CSV
+const rows = csvContent.trim().split('\n');
+const classesData = rows.slice(1).map(row => {
+  let inQuotes = false;
+  let currentField = '';
+  const fields = [];
+  
+  for (let i = 0; i < row.length; i++) {
+    const char = row[i];
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      fields.push(currentField);
+      currentField = '';
+    } else {
+      currentField += char;
+    }
+  }
+  fields.push(currentField);
+  
+  return {
+    term: fields[0],
+    usefulness: parseInt(fields[5] || '5', 10),
+    enjoyment: parseInt(fields[6] || '5', 10),
+    workload: parseInt(fields[7] || '5', 10),
+    difficulty: parseInt(fields[8] || '5', 10),
+    skipability: parseInt(fields[9] || '5', 10),
+  };
+});
+
+// Group by Term
+const termGroups = {};
+classesData.forEach(cls => {
+  if (!termGroups[cls.term]) {
+    termGroups[cls.term] = { term: cls.term, count: 0, enjoyment: 0, usefulness: 0, workload: 0, difficulty: 0, skipability: 0 };
+  }
+  termGroups[cls.term].count += 1;
+  termGroups[cls.term].enjoyment += cls.enjoyment;
+  termGroups[cls.term].usefulness += cls.usefulness;
+  termGroups[cls.term].workload += cls.workload;
+  termGroups[cls.term].difficulty += cls.difficulty;
+  termGroups[cls.term].skipability += cls.skipability;
+});
+
+// Compute averages and map to array
+const quarterAverages = Object.values(termGroups).map(group => ({
+  term: group.term,
+  enjoyment: Number((group.enjoyment / group.count).toFixed(2)),
+  usefulness: Number((group.usefulness / group.count).toFixed(2)),
+  workload: Number((group.workload / group.count).toFixed(2)),
+  difficulty: Number((group.difficulty / group.count).toFixed(2)),
+  skipability: Number((group.skipability / group.count).toFixed(2)),
+}));
+
+// Sort chronologically (Years then Quarters SU -> FA -> WI -> SP)
+quarterAverages.sort((a, b) => getTermScore(a.term) - getTermScore(b.term));
+
+const darkColors = tailwindConfig.theme.extend.colors.dark;
+const lightColors = tailwindConfig.theme.extend.colors.light;
+---
+
+<quarter-barchart data-averages={JSON.stringify(quarterAverages)} data-dark={JSON.stringify(darkColors)} data-light={JSON.stringify(lightColors)} class="block w-full">
+  <ChartCard title="Quarter Averages" subtitle="Average ratings across all classes taken during each term.">
+    <div class="relative w-full h-[400px]">
+      <canvas id="quarterBarChart"></canvas>
+    </div>
+  </ChartCard>
+</quarter-barchart>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  class QuarterBarChart extends HTMLElement {
+    connectedCallback() {
+      requestAnimationFrame(() => {
+        this.initChart();
+      });
+    }
+
+    initChart() {
+      const averages = JSON.parse(this.dataset.averages);
+      const darkColors = JSON.parse(this.dataset.dark);
+      const lightColors = JSON.parse(this.dataset.light);
+      const canvasCtx = this.querySelector('#quarterBarChart');
+
+      if (canvasCtx) {
+        let barChart;
+
+        const updateChart = () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          
+          // Theme Colors
+          const theme = isDark ? darkColors : lightColors;
+          const textColor = isDark ? theme.base04 : theme.base02; 
+          const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+          
+          // 5 Distinct Colors dynamically loaded from Tailwind
+          const colors = {
+            enjoyment: theme.base0A,
+            usefulness: theme.base0B,
+            workload: theme.base0C,
+            difficulty: theme.base0D,
+            skipability: theme.base0E
+          };
+
+          const labels = averages.map(q => q.term);
+
+          const chartData = {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Enjoyment',
+                data: averages.map(q => q.enjoyment),
+                backgroundColor: colors.enjoyment,
+                borderRadius: 2
+              },
+              {
+                label: 'Usefulness',
+                data: averages.map(q => q.usefulness),
+                backgroundColor: colors.usefulness,
+                borderRadius: 2
+              },
+              {
+                label: 'Workload',
+                data: averages.map(q => q.workload),
+                backgroundColor: colors.workload,
+                borderRadius: 2
+              },
+              {
+                label: 'Difficulty',
+                data: averages.map(q => q.difficulty),
+                backgroundColor: colors.difficulty,
+                borderRadius: 2
+              },
+              {
+                label: 'Skipability',
+                data: averages.map(q => q.skipability),
+                backgroundColor: colors.skipability,
+                borderRadius: 2
+              }
+            ]
+          };
+
+          if (barChart) {
+            barChart.data = chartData;
+            barChart.options.scales.x.grid.color = gridColor;
+            barChart.options.scales.y.grid.color = gridColor;
+            barChart.options.scales.x.ticks.color = textColor;
+            barChart.options.scales.y.ticks.color = textColor;
+            barChart.options.plugins.legend.labels.color = textColor;
+            barChart.update();
+          } else {
+            barChart = new Chart(canvasCtx, {
+              type: 'bar',
+              data: chartData,
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  x: {
+                    grid: { color: gridColor },
+                    ticks: { color: textColor, font: { weight: 'bold' } }
+                  },
+                  y: {
+                    min: 0,
+                    max: 10,
+                    grid: { color: gridColor },
+                    ticks: { color: textColor, stepSize: 2 }
+                  }
+                },
+                plugins: {
+                  legend: {
+                    position: 'top',
+                    labels: { color: textColor, font: { size: 12 }, usePointStyle: true }
+                  },
+                  tooltip: {
+                    backgroundColor: isDark ? 'rgba(38, 38, 38, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+                    titleColor: isDark ? '#ffffff' : '#161616',
+                    bodyColor: isDark ? '#dde1e6' : '#525252',
+                    padding: 12,
+                    cornerRadius: 4
+                  }
+                }
+              }
+            });
+          }
+        };
+
+        // Initialize chart
+        updateChart();
+
+        // Watch for theme changes to re-render chart colors
+        const observer = new MutationObserver(() => updateChart());
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      }
+    }
+  }
+
+  // Register custom element
+  if (!customElements.get('quarter-barchart')) {
+    customElements.define('quarter-barchart', QuarterBarChart);
+  }
+</script>

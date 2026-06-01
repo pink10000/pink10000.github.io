@@ -13,6 +13,7 @@
     "@astrojs/tailwind": "^5.1.4",
     "astro": "^5.1.2",
     "chart.js": "^4.4.7",
+    "d3": "^7.9.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "remark-toc": "^9.0.0"

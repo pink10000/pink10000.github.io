@@ -157,7 +157,7 @@ const lightColors = tailwindConfig.theme.extend.colors.light;
                   r: {
                     angleLines: { color: gridColor },
                     grid: { color: gridColor },
-                    pointLabels: { color: textColor, font: { size: 14 } },
+                    pointLabels: { color: textColor, font: { size: 14, family: 'monospace' } },
                     min: 0,
                     max: 10,
                     ticks: { display: false, stepSize: 2 }
@@ -166,12 +166,14 @@ const lightColors = tailwindConfig.theme.extend.colors.light;
                 plugins: {
                   legend: { 
                     position: 'top',
-                    labels: { color: textColor, font: { size: 14 }, usePointStyle: true }
+                    labels: { color: textColor, font: { size: 14, family: 'monospace' }, usePointStyle: true }
                   },
                   tooltip: {
                     backgroundColor: isDark ? 'rgba(38, 38, 38, 0.95)' : 'rgba(255, 255, 255, 0.95)',
                     titleColor: isDark ? '#ffffff' : '#161616',
                     bodyColor: isDark ? '#dde1e6' : '#525252',
+                    titleFont: { family: 'monospace' },
+                    bodyFont: { family: 'monospace' },
                     borderColor: gridColor,
                     borderWidth: 1,
                     padding: 12

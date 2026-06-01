@@ -1,0 +1,57 @@
+Term,Subject,Course,Course Title,Units,Usefulness,Enjoyment,Workload,Difficulty,Skipability
+FA22,CHEM,6A,General Chemistry I,4.00,1,8,2,2,10
+S222,CSE,11,Accel. Intro to Programming,4.00,4,5,4,2,2
+FA22,CSE,12,Basic Data Struct & OO Design,4.00,6,5,5,3,2
+FA22,CSE,15L,Software Tools&Techniques Lab,2.00,5,9,2,1,3
+SP23,CSE,30,Computer Organiz&Systms Progrm,4.00,5,5,4,4,3
+WI23,CSE,91,Perspectives in CSE,2.00,3,10,1,1,1
+FA23,CSE,95,Tutor Apprentice,2.00,1,2,1,1,9
+FA23,CSE,100R,Advanced Data Structures,4.00,8,7,4,3,2
+FA23,CSE,101,Design & Analysis of Algorithm,4.00,4,3,7,8,1
+SP24,CSE,105,Theory of Computation,4.00,3,9,3,4,8
+WI24,CSE,110,Software Engineering,4.00,8,8,3,3,9
+SP24,CSE,120,Princ/Computer Operating Systm,4.00,10,5,8,9,1
+WI26,CSE,122,Wireless Networks,4.00,4,3,4,6,8
+FA24,CSE,127,Intro to Computer Security,4.00,5,8,4,4,8
+SP25,CSE,145,Embedded Systems Design Proj,4.00,3,7,6,5,9
+SP24,CSE,150B,AI: Search and Reasoning,4.00,6,10,5,5,2
+FA24,CSE,151A,ML: Learning Algorithms,4.00,2,2,2,3,10
+WI24,CSE,152A,Intro to Comp Vision I,4.00,4,8,7,5,6
+WI25,CSE,160,Intro to Parallel Computing,4.00,9,8,6,4,9
+WI26,CSE,190,Data Center Systems,4.00,10,6,4,4,3
+SP25,CSE,190,Intro to Quantum Computing,4.00,3,6,3,5,8
+FA23,CSE,190,Programmers are People Too,4.00,7,2,2,2,7
+FA25,CSE,197,Field Study/Computer Sci&Engin,4.00,8,3,1,1,1
+WI26,CSE,202,Algorithm Design and Analysis,4.00,6,8,7,5,10
+SP24,CSE,224,Graduate Networked Systems,4.00,10,7,9,9,6
+WI25,CSE,230,Principles/Program Languages,4.00,3,8,2,4,9
+SP23,CSE,239B,Top/Sem/Programming Languages,1.00,5,5,1,1,2
+WI26,CSE,291P,"Language-Based Security",4.00,6,7,4,8,3
+FA25,CSE,291Y,Building Secure Sys with Rust,4.00,10,9,7,7,2
+FA23,ECON,109,Game Theory,4.00,4,4,2,3,9
+FA22,ENG,5,Orientation to Engr Profession,1.00,1,2,1,1,10
+S222,ENG,15,Engineer Your Success,2.00,2,2,1,1,10
+FA22,MATH,18,Linear Algebra,4.00,10,9,5,6,7
+WI23,MATH,20B,Calculus II,4.00,4,1,7,7,10
+SP23,MATH,20C,Calculus III,4.00,3,3,4,3,10
+FA24,MATH,20D,Intro/Differential Equations,4.00,6,1,8,3,10
+FA25,MATH,20E,Vector Calculus,4.00,5,2,8,2,10
+FA23,MATH,100A,Abstract Algebra I,4.00,7,10,6,7,4
+WI24,MATH,100B,Abstract Algebra II,4.00,7,7,7,8,4
+WI23,MATH,109,Mathematical Reasoning,4.00,10,5,8,10,2
+WI26,MATH,114,Intro/Computatnl Stochastics,4.00,4,6,2,3,9
+WI25,MATH,140A,Foundations of Real Analysis I,4.00,7,10,10,10,7
+SP25,MATH,140B,Foundations/Real Analysis II,4.00,6,7,10,10,6
+FA25,MATH,154,Discrete Math & Graph Theory,4.00,9,9,5,6,4
+FA24,MATH,160A,Elementary Math Logic I,4.00,5,1,6,9,2
+FA23,MATH,170A,Intro Numerical Analys/Linear,4.00,5,2,2,2,8
+SP23,MATH,180A,Introduction to Probability,4.00,10,5,5,6,3
+WI24,MATH,181A,Intro/Math Statistics I,4.00,3,9,8,4,1
+SP23,MATH,184,Enumerative Combinatorics,4.00,9,10,8,10,4
+FA25,MATH,187A,Introduction to Cryptography,4.00,4,6,2,3,10
+FA23,MATH,196,Student Colloquium,1.00,1,2,1,1,2
+FA22,MUS,15,Popular Music,4.00,1,8,2,1,7
+SP25,MUS,19R,Blacktronika: Afrofuturism,4.00,1,4,2,1,7
+WI23,SYN,1,Perspectives/Changing Planet,4.00,1,5,2,1,5
+WI24,SYN,2,Inquiring/Changing Planet,4.00,1,3,2,1,7
+SP25,SYN,100,Engaging/Changing Planet,4.00,2,7,3,2,2

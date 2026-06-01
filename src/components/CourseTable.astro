@@ -1,0 +1,266 @@
+---
+// src/components/CourseTable.astro
+import fs from 'node:fs';
+import path from 'node:path';
+
+export interface Props {
+  data?: Array<{
+    id: string;
+    title: string;
+    enjoyment: number;
+    usefulness: number;
+    workload: number;
+    difficulty: number;
+    skipability: number;
+    term?: string;
+    units?: number;
+  }>;
+}
+
+// Fallback to loading CSV directly if data is not provided as a prop
+let tableData = Astro.props.data;
+
+if (!tableData) {
+  const csvPath = path.resolve('./src/blog/classes.csv');
+  const csvContent = fs.readFileSync(csvPath, 'utf-8');
+  const rows = csvContent.trim().split('\n');
+  tableData = rows.slice(1).map(row => {
+    let inQuotes = false;
+    let currentField = '';
+    const fields = [];
+    
+    for (let i = 0; i < row.length; i++) {
+      const char = row[i];
+      if (char === '"') {
+        inQuotes = !inQuotes;
+      } else if (char === ',' && !inQuotes) {
+        fields.push(currentField);
+        currentField = '';
+      } else {
+        currentField += char;
+      }
+    }
+    fields.push(currentField);
+    
+    return {
+      term: fields[0],
+      subject: fields[1],
+      course: fields[2],
+      title: fields[3],
+      units: parseFloat(fields[4]),
+      usefulness: parseInt(fields[5] || '5', 10),
+      enjoyment: parseInt(fields[6] || '5', 10),
+      workload: parseInt(fields[7] || '5', 10),
+      difficulty: parseInt(fields[8] || '5', 10),
+      skipability: parseInt(fields[9] || '5', 10),
+      id: `${fields[1]} ${fields[2]}`.trim()
+    };
+  });
+}
+---
+
+<sortable-table class="block w-full">
+  <div class="p-6 bg-light-base00 dark:bg-dark-base00 border border-light-base02 dark:border-dark-base02 transition-colors duration-200">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-xl font-bold text-light-base05 dark:text-white">Course Ratings Overview</h3>
+      <button id="expandBtn" title="Expand All" class="bg-light-base01 dark:bg-dark-base01 hover:bg-light-base02 dark:hover:bg-dark-base02 text-light-base04 dark:text-dark-base04 p-2 border border-light-base02 dark:border-dark-base02 transition-colors flex items-center justify-center group">
+        <svg id="expandIcon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 block group-hover:text-light-base05 dark:group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+        </svg>
+        <svg id="collapseIcon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 hidden group-hover:text-light-base05 dark:group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 15l4 4 4-4m0-6l-4-4-4 4" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile View (Cards) -->
+    <div id="mobileContainer" class="grid grid-cols-1 gap-4 md:hidden max-h-[500px] overflow-y-auto pr-2 transition-all duration-300 custom-scrollbar" style="scrollbar-gutter: stable;">
+      {tableData.map(cls => (
+        <div class="sort-item bg-light-base01 dark:bg-dark-base01 p-4 border border-light-base02 dark:border-dark-base02 transition-colors" 
+             data-id={cls.id} data-title={cls.title} data-enjoyment={cls.enjoyment} data-usefulness={cls.usefulness} data-workload={cls.workload} data-difficulty={cls.difficulty} data-skipability={cls.skipability}>
+          <div class="font-bold text-light-base05 dark:text-white text-base mb-1">{cls.id}</div>
+          <div class="text-light-base04 dark:text-dark-base04 text-sm mb-4">{cls.title}</div>
+          <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-light-base03 dark:text-dark-base03">Enjoyment:</span>
+              <span class="text-light-base05 dark:text-white font-medium">{cls.enjoyment}/10</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-light-base03 dark:text-dark-base03">Usefulness:</span>
+              <span class="text-light-base05 dark:text-white font-medium">{cls.usefulness}/10</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-light-base03 dark:text-dark-base03">Workload:</span>
+              <span class="text-light-base05 dark:text-white font-medium">{cls.workload}/10</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-light-base03 dark:text-dark-base03">Difficulty:</span>
+              <span class="text-light-base05 dark:text-white font-medium">{cls.difficulty}/10</span>
+            </div>
+            <div class="flex justify-between col-span-2 border-t border-light-base02 dark:border-dark-base02 pt-2 mt-1 transition-colors">
+              <span class="text-light-base03 dark:text-dark-base03">Skipability:</span>
+              <span class="text-light-base05 dark:text-white font-medium">{cls.skipability}/10</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Desktop View (Scrollable Table) -->
+    <div class="hidden md:block overflow-hidden">
+      <div id="tableContainer" class="max-h-[500px] overflow-y-auto pr-2 transition-all duration-300" style="scrollbar-width: thin; scrollbar-gutter: stable;">
+        <table class="w-full text-left text-xs text-light-base04 dark:text-dark-base04 relative table-fixed">
+          <thead class="uppercase bg-light-base01/90 dark:bg-dark-base01/90 sticky top-0 z-10 shadow-sm backdrop-blur-md transition-colors">
+            <tr>
+              <th class="px-3 py-2 font-semibold w-20 md:w-24 cursor-pointer hover:text-light-base05 dark:hover:text-white transition-colors group relative" data-sort="id">
+                Course <span class="sort-icon absolute right-1 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-50 text-[10px]">↕</span>
+              </th>
+              <th class="px-3 py-2 font-semibold w-full cursor-pointer hover:text-light-base05 dark:hover:text-white transition-colors group relative" data-sort="title">
+                Title <span class="sort-icon absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-50 text-[10px]">↕</span>
+              </th>
+              <th class="px-1 py-2 text-center font-semibold w-14 md:w-16 cursor-pointer hover:text-light-base05 dark:hover:text-white transition-colors group relative" title="Enjoyment" data-sort="enjoyment">
+                Enjoy <span class="sort-icon absolute right-1 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-50 text-[10px]">↕</span>
+              </th>
+              <th class="px-1 py-2 text-center font-semibold w-14 md:w-16 cursor-pointer hover:text-light-base05 dark:hover:text-white transition-colors group relative" title="Usefulness" data-sort="usefulness">
+                Useful <span class="sort-icon absolute right-1 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-50 text-[10px]">↕</span>
+              </th>
+              <th class="px-1 py-2 text-center font-semibold w-14 md:w-16 cursor-pointer hover:text-light-base05 dark:hover:text-white transition-colors group relative" title="Workload" data-sort="workload">
+                Work <span class="sort-icon absolute right-1 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-50 text-[10px]">↕</span>
+              </th>
+              <th class="px-1 py-2 text-center font-semibold w-14 md:w-16 cursor-pointer hover:text-light-base05 dark:hover:text-white transition-colors group relative" title="Difficulty" data-sort="difficulty">
+                Diff <span class="sort-icon absolute right-1 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-50 text-[10px]">↕</span>
+              </th>
+              <th class="px-1 py-2 text-center font-semibold w-14 md:w-16 cursor-pointer hover:text-light-base05 dark:hover:text-white transition-colors group relative" title="Skipability" data-sort="skipability">
+                Skip <span class="sort-icon absolute right-1 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-50 text-[10px]">↕</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="tableBody" class="divide-y divide-light-base02 dark:divide-dark-base02 transition-colors">
+            {tableData.map(cls => (
+              <tr class="sort-item hover:bg-light-base01 dark:hover:bg-dark-base01 transition-colors group" 
+                  data-id={cls.id} data-title={cls.title} data-enjoyment={cls.enjoyment} data-usefulness={cls.usefulness} data-workload={cls.workload} data-difficulty={cls.difficulty} data-skipability={cls.skipability}>
+                <td class="px-3 py-1.5 font-medium text-light-base05 dark:text-white group-hover:text-light-base0B dark:group-hover:text-dark-base0B transition-colors whitespace-nowrap truncate" title={cls.id}>{cls.id}</td>
+                <td class="px-3 py-1.5 truncate" title={cls.title}>{cls.title}</td>
+                <td class="px-1 py-1.5 text-center">{cls.enjoyment}</td>
+                <td class="px-1 py-1.5 text-center">{cls.usefulness}</td>
+                <td class="px-1 py-1.5 text-center">{cls.workload}</td>
+                <td class="px-1 py-1.5 text-center">{cls.difficulty}</td>
+                <td class="px-1 py-1.5 text-center font-medium">{cls.skipability}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</sortable-table>
+
+<script>
+  class SortableTable extends HTMLElement {
+    connectedCallback() {
+      // 1. Expand / Collapse Logic
+      const expandBtn = this.querySelector('#expandBtn');
+      const mobileContainer = this.querySelector('#mobileContainer');
+      const tableContainer = this.querySelector('#tableContainer');
+      let isExpanded = false;
+
+      if (expandBtn) {
+        const expandIcon = expandBtn.querySelector('#expandIcon');
+        const collapseIcon = expandBtn.querySelector('#collapseIcon');
+        
+        expandBtn.addEventListener('click', () => {
+          isExpanded = !isExpanded;
+          if (isExpanded) {
+            mobileContainer?.classList.remove('max-h-[500px]');
+            tableContainer?.classList.remove('max-h-[500px]');
+            expandBtn.title = 'Collapse All';
+            if (expandIcon) { expandIcon.classList.remove('block'); expandIcon.classList.add('hidden'); }
+            if (collapseIcon) { collapseIcon.classList.remove('hidden'); collapseIcon.classList.add('block'); }
+          } else {
+            mobileContainer?.classList.add('max-h-[500px]');
+            tableContainer?.classList.add('max-h-[500px]');
+            expandBtn.title = 'Expand All';
+            if (expandIcon) { expandIcon.classList.remove('hidden'); expandIcon.classList.add('block'); }
+            if (collapseIcon) { collapseIcon.classList.remove('block'); collapseIcon.classList.add('hidden'); }
+          }
+        });
+      }
+
+      // 2. Sorting Logic (Modular & Reusable)
+      const headers = this.querySelectorAll('th[data-sort]');
+      const tbody = this.querySelector('#tableBody');
+      const mobileWrapper = this.querySelector('#mobileContainer');
+      
+      let currentSortKey = null;
+      let currentSortAsc = true;
+
+      headers.forEach(header => {
+        header.addEventListener('click', () => {
+          const sortKey = header.getAttribute('data-sort');
+          if (!sortKey) return;
+
+          // Toggle direction
+          if (currentSortKey === sortKey) {
+            currentSortAsc = !currentSortAsc;
+          } else {
+            currentSortKey = sortKey;
+            currentSortAsc = true;
+          }
+
+          // Update icons
+          headers.forEach(h => {
+            const icon = h.querySelector('.sort-icon');
+            if (icon) {
+              icon.classList.remove('opacity-100');
+              icon.classList.remove('text-light-base0B', 'dark:text-dark-base0B');
+              icon.classList.add('opacity-0');
+              icon.textContent = '↕';
+            }
+          });
+          
+          const activeIcon = header.querySelector('.sort-icon');
+          if (activeIcon) {
+            activeIcon.classList.remove('opacity-0');
+            activeIcon.classList.add('opacity-100', 'text-light-base0B', 'dark:text-dark-base0B');
+            activeIcon.textContent = currentSortAsc ? '↑' : '↓';
+          }
+
+          // Sort helper function
+          const sortItems = (container) => {
+            if (!container) return;
+            const items = Array.from(container.querySelectorAll('.sort-item'));
+            
+            items.sort((a, b) => {
+              const valA = a.getAttribute(`data-${sortKey}`);
+              const valB = b.getAttribute(`data-${sortKey}`);
+              
+              // Try numerical sort first
+              const numA = parseFloat(valA);
+              const numB = parseFloat(valB);
+              
+              if (!isNaN(numA) && !isNaN(numB)) {
+                return currentSortAsc ? numA - numB : numB - numA;
+              }
+              
+              // Fallback to string sort with numeric collation
+              return currentSortAsc 
+                ? String(valA).localeCompare(String(valB), undefined, { numeric: true })
+                : String(valB).localeCompare(String(valA), undefined, { numeric: true });
+            });
+
+            // Re-append to DOM
+            items.forEach(item => container.appendChild(item));
+          };
+
+          // Sort both desktop table and mobile cards
+          sortItems(tbody);
+          sortItems(mobileWrapper);
+        });
+      });
+    }
+  }
+
+  if (!customElements.get('sortable-table')) {
+    customElements.define('sortable-table', SortableTable);
+  }
+</script>

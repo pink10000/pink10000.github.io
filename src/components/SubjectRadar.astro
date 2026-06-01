@@ -1,0 +1,193 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Load and parse the CSV data server-side
+const csvPath = path.resolve('./src/blog/classes.csv');
+const csvContent = fs.readFileSync(csvPath, 'utf-8');
+
+// Parse the CSV
+const rows = csvContent.trim().split('\n');
+const classesData = rows.slice(1).map(row => {
+  let inQuotes = false;
+  let currentField = '';
+  const fields = [];
+  
+  for (let i = 0; i < row.length; i++) {
+    const char = row[i];
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      fields.push(currentField);
+      currentField = '';
+    } else {
+      currentField += char;
+    }
+  }
+  fields.push(currentField);
+  
+  return {
+    subject: fields[1],
+    usefulness: parseInt(fields[5] || '5', 10),
+    enjoyment: parseInt(fields[6] || '5', 10),
+    workload: parseInt(fields[7] || '5', 10),
+    difficulty: parseInt(fields[8] || '5', 10),
+    skipability: parseInt(fields[9] || '5', 10),
+  };
+});
+
+// Calculate Averages
+const calculateAverage = (subjectFilter) => {
+  const filtered = classesData.filter(c => c.subject === subjectFilter);
+  if (filtered.length === 0) return [0, 0, 0, 0, 0];
+  
+  const sums = filtered.reduce((acc, curr) => {
+    acc[0] += curr.enjoyment;
+    acc[1] += curr.usefulness;
+    acc[2] += curr.workload;
+    acc[3] += curr.difficulty;
+    acc[4] += curr.skipability;
+    return acc;
+  }, [0, 0, 0, 0, 0]);
+
+  return sums.map(sum => Number((sum / filtered.length).toFixed(2)));
+};
+
+const cseAverages = calculateAverage('CSE');
+const mathAverages = calculateAverage('MATH');
+
+const chartData = {
+  cse: cseAverages,
+  math: mathAverages
+};
+---
+
+<subject-radar data-averages={JSON.stringify(chartData)} class="block w-full">
+  <!-- Subject Comparison Radar -->
+  <div class="p-6 bg-light-base00 dark:bg-dark-base00 border border-light-base02 dark:border-dark-base02 transition-colors duration-200">
+    <h3 class="text-xl font-bold text-light-base05 dark:text-white mb-2 transition-colors">Department Comparison: CSE vs MATH</h3>
+    <p class="text-light-base04 dark:text-dark-base04 mb-6 transition-colors">Average ratings across all computer science and mathematics courses.</p>
+    
+    <div class="relative w-full h-[400px] flex justify-center">
+      <canvas id="subjectRadarChart"></canvas>
+    </div>
+</subject-radar>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  class SubjectRadar extends HTMLElement {
+    connectedCallback() {
+      requestAnimationFrame(() => {
+        this.initCharts();
+      });
+    }
+
+    initCharts() {
+      const averages = JSON.parse(this.dataset.averages);
+      const radarCtx = this.querySelector('#subjectRadarChart');
+
+      if (radarCtx) {
+        let radarChart;
+
+        const updateRadarChart = () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          
+          // Theme Colors
+          const textColor = isDark ? '#dde1e6' : '#525252'; // base04 / base02
+          const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+          
+          // CSE Colors (Blue)
+          const cseColor = isDark ? '#33b1ff' : '#0f62fe'; // base0B
+          // MATH Colors (Orange)
+          const mathColor = isDark ? '#FF6F00' : '#FF6F00'; // base0A
+          
+          const radarData = {
+            labels: ['Enjoyment', 'Usefulness', 'Workload', 'Difficulty', 'Skipability'],
+            datasets: [
+              {
+                label: 'CSE Average',
+                data: averages.cse,
+                backgroundColor: isDark ? 'rgba(51, 177, 255, 0.2)' : 'rgba(15, 98, 254, 0.2)',
+                borderColor: cseColor,
+                pointBackgroundColor: cseColor,
+                pointBorderColor: isDark ? '#161616' : '#f2f4f8',
+                pointHoverBackgroundColor: isDark ? '#161616' : '#f2f4f8',
+                pointHoverBorderColor: cseColor,
+                borderWidth: 2,
+              },
+              {
+                label: 'MATH Average',
+                data: averages.math,
+                backgroundColor: isDark ? 'rgba(255, 111, 0, 0.2)' : 'rgba(255, 111, 0, 0.2)',
+                borderColor: mathColor,
+                pointBackgroundColor: mathColor,
+                pointBorderColor: isDark ? '#161616' : '#f2f4f8',
+                pointHoverBackgroundColor: isDark ? '#161616' : '#f2f4f8',
+                pointHoverBorderColor: mathColor,
+                borderWidth: 2,
+              }
+            ]
+          };
+
+          if (radarChart) {
+            radarChart.data = radarData;
+            radarChart.options.scales.r.angleLines.color = gridColor;
+            radarChart.options.scales.r.grid.color = gridColor;
+            radarChart.options.scales.r.pointLabels.color = textColor;
+            radarChart.options.plugins.legend.labels.color = textColor;
+            radarChart.update();
+          } else {
+            radarChart = new Chart(radarCtx, {
+              type: 'radar',
+              data: radarData,
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  r: {
+                    min: 0,
+                    max: 10,
+                    angleLines: { color: gridColor },
+                    grid: { color: gridColor },
+                    pointLabels: { color: textColor, font: { size: 14 } },
+                    ticks: { display: false, stepSize: 2 }
+                  }
+                },
+                plugins: {
+                  legend: { 
+                    display: true, 
+                    position: 'top',
+                    labels: { color: textColor, font: { size: 14 } }
+                  },
+                  tooltip: {
+                    backgroundColor: isDark ? 'rgba(38, 38, 38, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+                    titleColor: isDark ? '#ffffff' : '#161616',
+                    bodyColor: isDark ? '#dde1e6' : '#525252',
+                    borderColor: gridColor,
+                    borderWidth: 1,
+                    padding: 12
+                  }
+                }
+              }
+            });
+          }
+        };
+
+        // Initialize radar
+        updateRadarChart();
+
+        // Watch for theme changes to re-render chart colors
+        const observer = new MutationObserver(() => {
+          updateRadarChart();
+        });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      }
+    }
+  }
+
+  // Register custom element
+  if (!customElements.get('subject-radar')) {
+    customElements.define('subject-radar', SubjectRadar);
+  }
+</script>

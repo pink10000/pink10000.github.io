@@ -62,7 +62,7 @@ const lightColors = tailwindConfig.theme.extend.colors.light;
 ---
 
 <course-heatmap data-classes={JSON.stringify(classesData)} data-dark={JSON.stringify(darkColors)} data-light={JSON.stringify(lightColors)} class="block w-full">
-  <ChartCard title="Course Ratings Matrix" subtitle="Rendered natively with D3.js. Grouped chronologically.">
+  <ChartCard title="Course Ratings Matrix" subtitle="Rendered natively with D3.js. Grouped chronologically." collapsible={true}>
     <div class="relative overflow-x-auto custom-scrollbar pb-2 flex justify-center">
       
       <!-- Tooltip -->

@@ -66,7 +66,7 @@ const lightColors = tailwindConfig.theme.extend.colors.light;
 ---
 
 <subject-radar class="block w-full" data-averages={JSON.stringify(chartData)} data-dark={JSON.stringify(darkColors)} data-light={JSON.stringify(lightColors)}>
-  <ChartCard title="Department Comparison: CSE vs MATH" subtitle="Average ratings across all computer science and mathematics courses.">
+  <ChartCard title="Department Comparison: CSE vs MATH" subtitle="Average ratings across all computer science and mathematics courses." collapsible={true}>
     <div class="relative w-full aspect-square max-h-[350px] mx-auto flex justify-center items-center">
       <canvas id="subjectRadarChart"></canvas>
     </div>

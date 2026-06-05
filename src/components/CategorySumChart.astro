@@ -70,7 +70,7 @@ const lightColors = tailwindConfig.theme.extend.colors.light;
 ---
 
 <category-sum-chart data-sums={JSON.stringify(quarterSums)} data-dark={JSON.stringify(darkColors)} data-light={JSON.stringify(lightColors)} class="block w-full">
-  <ChartCard title="Quarterly Category Sums" subtitle="The absolute sum of points for every class taken in a quarter, weighted by the number of units the class is worth.">
+  <ChartCard title="Quarterly Category Sums" subtitle="The absolute sum of points for every class taken in a quarter, weighted by the number of units the class is worth." collapsible={true}>
     <div slot="actions" class="relative">
       <select id="metricSelect" class="appearance-none bg-light-base01 dark:bg-dark-base01 border border-light-base02 dark:border-dark-base02 text-light-base05 dark:text-white py-2 pl-4 pr-10 hover:border-light-base03 dark:hover:border-dark-base03 focus:outline-none focus:ring-1 focus:ring-light-base0E dark:focus:ring-dark-base0E transition-colors cursor-pointer text-sm font-semibold shadow-sm rounded">
         <option value="workload">Workload</option>

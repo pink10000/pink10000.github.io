@@ -5,6 +5,20 @@ import ItemRow from "./ItemRow.astro";
 <ul
   class="theme-transition grid grid-cols-[10rem_2px_1fr] gap-x-4 gap-y-4 text-light-base05 mb-4"
 >
+  <ItemRow title="Tribbler: Distributed Key-Value Store">
+    A fault-tolerant, highly available, distributed key-value store built in
+    Rust. Utilizes consistent hashing to replicate data across dynamic server
+    pools, managed by a consensus-based keeper service. Uses 2-second heartbeats
+    for dynamic leader elections and failovers. Features an idempotent,
+    append-only log ensuring eventual consistency during network partitions.
+    Built for <a
+      href="https://cseweb.ucsd.edu/classes/sp26/cse223B-a/tribbler/lab/lab3/index.html"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">CSE 223B</a
+    >.
+  </ItemRow>
+
   <ItemRow title="SURFStore">
     A fault-tolerant, asynchronous, distributed, networked database that
     supports file storage and retrieval using the RAFT consensus algorithm as
@@ -41,6 +55,72 @@ import ItemRow from "./ItemRow.astro";
     >.
   </ItemRow>
 
+  <ItemRow title="vicrds: A Collaborative Text Editor">
+    A decentralized, peer-to-peer collaborative text editor written in Rust.
+    Implemented a custom CRDT based on a Replicated-Growth Array to guarantee
+    strong eventual consistency without a central server. Engineered a
+    fault-tolerant backend using gRPC and a gossip-based protocol for dynamic
+    peer discovery and failure detection. Features a decentralized tombstone
+    compaction algorithm for safe distributed garbage collection across network
+    partitions. See technical report <a
+      href="./papers/vicrds.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">here</a
+    >.
+  </ItemRow>
+
+  <ItemRow title="Rigid Body Physics Simulation">
+    A 3D rigid body physics engine built in Python to model a falling cube
+    experiencing gravity and perfectly inelastic collisions. Formulated the
+    system's unconstrained motion using the Least Action Principle and
+    Lagrangian mechanics. Modeled ground collisions and Coulomb dry friction
+    through KKT optimality conditions, solved dynamically via SciPy's SLSQP
+    nonlinear optimizer. Visualized the state evolution and rotational
+    kinematics using NumPy and Polyscope. Built for <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">CSE 291G</a
+    >. See technical report <a
+      href="./papers/rigid_body_simulation.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">here</a
+    >. See submission video <a
+      href="https://youtu.be/cMOBy6q9Bds"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">here</a
+    >.
+  </ItemRow>
+
+  <ItemRow title="Fluid Dynamics Simulation">
+    A GPU-accelerated 2D fluid engine built in Python and Taichi to simulate the
+    Karman vortex street phenomenon. Discretized the incompressible
+    Navier-Stokes equations onto a Marker-and-Cell (MAC) grid, utilizing Strang
+    Splitting and a Jacobi iterative solver for pressure projection. Implemented
+    Semi-Lagrangian and Back-and-Forth Error Correction and Compensation (BFECC)
+    schemes to minimize numerical diffusion during advection. Visualized flow
+    patterns by advecting a passive scalar ink field and computing discrete
+    vorticity. Built for <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">CSE 291G</a
+    >. See technical report <a
+      href="./papers/fluid_dynamics_simulation.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">here</a
+    >. See submission video <a
+      href="https://youtu.be/cMOBy6q9Bds"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-light-base0B dark:text-dark-base0B underline">here</a
+    >.
+  </ItemRow>
+
   <ItemRow
     title="enclose.horse ILP Solver"
     link="https://github.com/pink10000/eh_ilp_solver"
@@ -65,14 +145,6 @@ import ItemRow from "./ItemRow.astro";
     >.
   </ItemRow>
 
-  <ItemRow title="Notes Website" link="https://kytrinh.me/notes/">
-    Built and deployed a Quartz-based notes site to GitHub Pages, with CI
-    workflows that automatically rebuild and publish updates on every push.
-    Implemented custom Quartz plugins to support math-heavy content, including a
-    Desmos transformer/emitter that integrates Obsidian Desmos graphs via
-    pre-generated SVG assets, plus TikZ support for embedded diagram rendering.
-  </ItemRow>
-
   <ItemRow title="Snek Compiler">
     Developed a compiler for a Lisp-like language called Snek, targeting x86-64
     assembly in Rust. Implemented a full compiler pipeline including lexing,
@@ -94,6 +166,14 @@ import ItemRow from "./ItemRow.astro";
     Trained a ResNet 18-layer CNN on Canadian wildfire satellite images over the
     last 30 years to predict wildfire outbreaks. Won 2nd place @ UCSD
     DiamondHacks 2024.
+  </ItemRow>
+
+  <ItemRow title="Notes Website" link="https://kytrinh.me/notes/">
+    Built and deployed a Quartz-based notes site to GitHub Pages, with CI
+    workflows that automatically rebuild and publish updates on every push.
+    Implemented custom Quartz plugins to support math-heavy content, including a
+    Desmos transformer/emitter that integrates Obsidian Desmos graphs via
+    pre-generated SVG assets, plus TikZ support for embedded diagram rendering.
   </ItemRow>
 
   <ItemRow title="Distributed ML Data Loading with gRPC">

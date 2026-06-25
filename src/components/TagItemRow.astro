@@ -1,0 +1,61 @@
+---
+import ItemRow from "./ItemRow.astro";
+
+const { title, meta, link, tags = [] } = Astro.props;
+
+// Oxocarbon base16 color schemes
+const tagColors: Record<string, string> = {
+  "distributed systems": "text-light-base0B dark:text-dark-base09 border-light-base0B/20 dark:border-dark-base09/20",
+  "rust": "text-light-base0A dark:text-dark-base0C border-light-base0A/20 dark:border-dark-base0C/20",
+  "python": "text-light-base0C dark:text-dark-base0E border-light-base0C/20 dark:border-dark-base0E/20",
+  "go": "text-light-base07 dark:text-dark-base07 border-light-base07/20 dark:border-dark-base07/20",
+  "c++": "text-light-base09 dark:text-dark-base08 border-light-base09/20 dark:border-dark-base08/20",
+  "lean4": "text-light-base0D dark:text-dark-base0D border-light-base0D/20 dark:border-dark-base0D/20",
+  "math": "text-light-base0E dark:text-dark-base0F border-light-base0E/20 dark:border-dark-base0F/20",
+  "default": "text-light-base05 dark:text-dark-base04 border-light-base02/20 dark:border-dark-base02/20"
+};
+---
+
+<ItemRow 
+  title={title} 
+  meta={meta} 
+  link={link} 
+  class="project-item" 
+  data-tags={tags.join(",")} 
+  data-title={title.toLowerCase()}
+>
+  <span class="flex flex-col justify-between h-full">
+    <span>
+      <slot />
+    </span>
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-1 mt-2 md:hidden">
+        {tags.map((tag) => (
+          <span 
+            class={`tag-badge text-[10px] px-1.5 py-0.5 rounded border bg-light-base01/40 dark:bg-dark-base01/40 font-mono transition-colors ${tagColors[tag] || tagColors.default}`}
+            data-tag={tag}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </span>
+
+  <Fragment slot="extra">
+    {/* Column 4: Divider (hidden on mobile, visible on desktop) */}
+    <div class="hidden md:block border-l-2 border-light-base02 dark:border-dark-base0A"></div>
+    
+    {/* Column 5: Tags (hidden on mobile, visible on desktop) */}
+    <span class="hidden md:flex flex-wrap gap-1 content-start select-none">
+      {tags.map((tag) => (
+        <span 
+          class={`tag-badge text-[10px] px-1.5 py-0.5 rounded border bg-light-base01/40 dark:bg-dark-base01/40 font-mono transition-colors ${tagColors[tag] || tagColors.default}`}
+          data-tag={tag}
+        >
+          {tag}
+        </span>
+      ))}
+    </span>
+  </Fragment>
+</ItemRow>

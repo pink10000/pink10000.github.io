@@ -1,11 +1,76 @@
 ---
-import ItemRow from "./ItemRow.astro";
+import TagItemRow from "./TagItemRow.astro";
 ---
 
+<!-- Filter & Sort UI
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-3 border-b border-light-base01 dark:border-dark-base02 font-mono text-xs select-none">
+  <div class="flex flex-wrap items-center gap-1.5 animate-fade-in" id="filterButtonsContainer">
+    <span class="text-light-base02 dark:text-dark-base03 mr-1">filter:</span>
+    <button 
+      type="button"
+      class="filter-btn active-filter px-2 py-0.5 rounded font-mono transition-colors border cursor-pointer border-transparent bg-light-base02 dark:bg-dark-base02 text-light-base00 dark:text-dark-base06"
+      data-tag="all"
+    >
+      all
+    </button>
+    <button 
+      type="button"
+      class="filter-btn px-2 py-0.5 rounded font-mono transition-colors border cursor-pointer bg-light-base01/40 dark:bg-dark-base01/40 text-light-base05 dark:text-dark-base04 hover:bg-light-base02/45 dark:hover:bg-dark-base02/45 border-light-base02/40 dark:border-dark-base02/40"
+      data-tag="distributed systems"
+    >
+      distributed systems
+    </button>
+    <button 
+      type="button"
+      class="filter-btn px-2 py-0.5 rounded font-mono transition-colors border cursor-pointer bg-light-base01/40 dark:bg-dark-base01/40 text-light-base05 dark:text-dark-base04 hover:bg-light-base02/45 dark:hover:bg-dark-base02/45 border-light-base02/40 dark:border-dark-base02/40"
+      data-tag="rust"
+    >
+      rust
+    </button>
+    <button 
+      type="button"
+      class="filter-btn px-2 py-0.5 rounded font-mono transition-colors border cursor-pointer bg-light-base01/40 dark:bg-dark-base01/40 text-light-base05 dark:text-dark-base04 hover:bg-light-base02/45 dark:hover:bg-dark-base02/45 border-light-base02/40 dark:border-dark-base02/40"
+      data-tag="python"
+    >
+      python
+    </button>
+    <button 
+      type="button"
+      class="filter-btn px-2 py-0.5 rounded font-mono transition-colors border cursor-pointer bg-light-base01/40 dark:bg-dark-base01/40 text-light-base05 dark:text-dark-base04 hover:bg-light-base02/45 dark:hover:bg-dark-base02/45 border-light-base02/40 dark:border-dark-base02/40"
+      data-tag="math"
+    >
+      math
+    </button>
+    <button 
+      type="button"
+      class="filter-btn px-2 py-0.5 rounded font-mono transition-colors border cursor-pointer bg-light-base01/40 dark:bg-dark-base01/40 text-light-base05 dark:text-dark-base04 hover:bg-light-base02/45 dark:hover:bg-dark-base02/45 border-light-base02/40 dark:border-dark-base02/40"
+      data-tag="lean4"
+    >
+      lean4
+    </button>
+  </div>
+  
+  <div class="flex items-center gap-2">
+    <span class="text-light-base02 dark:text-dark-base03">sort:</span>
+    <button 
+      type="button"
+      id="sortToggleBtn" 
+      class="px-2 py-0.5 rounded font-mono transition-colors border cursor-pointer bg-light-base01/40 dark:bg-dark-base01/40 text-light-base05 dark:text-dark-base04 hover:bg-light-base02/45 dark:hover:bg-dark-base02/45 border-light-base02/40 dark:border-dark-base02/40"
+      data-sort="default"
+    >
+      default
+    </button>
+  </div>
+</div>
+-->
 <ul
-  class="theme-transition grid grid-cols-[10rem_2px_1fr] gap-x-4 gap-y-4 text-light-base05 mb-4"
+  id="projectsList"
+  class="theme-transition grid grid-cols-[10rem_2px_1fr] md:grid-cols-[10rem_2px_1fr_2px_8rem] gap-x-4 gap-y-4 text-light-base05 mb-4"
 >
-  <ItemRow title="Tribbler: Distributed Key-Value Store">
+  <TagItemRow
+    title="Tribbler: Distributed Key-Value Store"
+    tags={["distributed systems", "rust"]}
+  >
     A fault-tolerant, highly available, distributed key-value store built in
     Rust. Utilizes consistent hashing to replicate data across dynamic server
     pools, managed by a consensus-based keeper service. Uses 2-second heartbeats
@@ -17,17 +82,18 @@ import ItemRow from "./ItemRow.astro";
       rel="noopener noreferrer"
       class="text-light-base0B dark:text-dark-base0B underline">CSE 223B</a
     >.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow title="SURFStore">
+  <TagItemRow title="SURFStore" tags={["distributed systems", "go"]}>
     A fault-tolerant, asynchronous, distributed, networked database that
     supports file storage and retrieval using the RAFT consensus algorithm as
     part of CSE 224. Used Golang, gRPC, Protobuf, TCP/IP.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow
+  <TagItemRow
     title="junkfish"
     link="https://github.com/Grace-Note-LLC/distributed-chess"
+    tags={["c++", "embedded"]}
   >
     A Chess bot running on low-power recycled IoT microcontroller units on a
     custom chess engine in C++. Uses the minimax algorithm with alpha-beta
@@ -39,9 +105,13 @@ import ItemRow from "./ItemRow.astro";
       class="text-light-base0B dark:text-dark-base0B underline">1st place</a
     >
     at Fall 2024 UCSD IEEE Quarterly Projects.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow title="termail" link="https://github.com/pink10000/termail">
+  <TagItemRow
+    title="termail"
+    link="https://github.com/pink10000/termail"
+    tags={["rust", "tui", "wasm"]}
+  >
     Architected a TUI email client implementing a plugin system via a custom
     WebAssembly (using the WASI component model) runtime for secure, sandboxed
     extension execution. Engineered a concurrent rendering pipeline to handle
@@ -53,9 +123,12 @@ import ItemRow from "./ItemRow.astro";
       rel="noopener noreferrer"
       class="text-light-base0B dark:text-dark-base0B underline">here</a
     >.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow title="vicrds: A Collaborative Text Editor">
+  <TagItemRow
+    title="vicrds: A Collaborative Text Editor"
+    tags={["distributed systems", "rust"]}
+  >
     A decentralized, peer-to-peer collaborative text editor written in Rust.
     Implemented a custom CRDT based on a Replicated-Growth Array to guarantee
     strong eventual consistency without a central server. Engineered a
@@ -68,9 +141,12 @@ import ItemRow from "./ItemRow.astro";
       rel="noopener noreferrer"
       class="text-light-base0B dark:text-dark-base0B underline">here</a
     >.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow title="Rigid Body Physics Simulation">
+  <TagItemRow
+    title="Rigid Body Physics Simulation"
+    tags={["python", "simulation", "math"]}
+  >
     A 3D rigid body physics engine built in Python to model a falling cube
     experiencing gravity and perfectly inelastic collisions. Formulated the
     system's unconstrained motion using the Least Action Principle and
@@ -93,9 +169,12 @@ import ItemRow from "./ItemRow.astro";
       rel="noopener noreferrer"
       class="text-light-base0B dark:text-dark-base0B underline">here</a
     >.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow title="Fluid Dynamics Simulation">
+  <TagItemRow
+    title="Fluid Dynamics Simulation"
+    tags={["python", "simulation", "math"]}
+  >
     A GPU-accelerated 2D fluid engine built in Python and Taichi to simulate the
     Karman vortex street phenomenon. Discretized the incompressible
     Navier-Stokes equations onto a Marker-and-Cell (MAC) grid, utilizing Strang
@@ -119,11 +198,12 @@ import ItemRow from "./ItemRow.astro";
       rel="noopener noreferrer"
       class="text-light-base0B dark:text-dark-base0B underline">here</a
     >.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow
+  <TagItemRow
     title="enclose.horse ILP Solver"
     link="https://github.com/pink10000/eh_ilp_solver"
+    tags={["python", "algorithms", "math"]}
   >
     Built an Integer Linear Programming (ILP) solver for the puzzle game
     <a
@@ -143,9 +223,9 @@ import ItemRow from "./ItemRow.astro";
       rel="noopener noreferrer"
       class="text-light-base0B dark:text-dark-base0B underline">here</a
     >.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow title="Snek Compiler">
+  <TagItemRow title="Snek Compiler" tags={["rust", "compilers"]}>
     Developed a compiler for a Lisp-like language called Snek, targeting x86-64
     assembly in Rust. Implemented a full compiler pipeline including lexing,
     parsing, semantic analysis, and code generation. Supported features like
@@ -157,26 +237,34 @@ import ItemRow from "./ItemRow.astro";
       rel="noopener noreferrer"
       class="text-light-base0B dark:text-dark-base0B underline">CSE 231</a
     >.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow
+  <TagItemRow
     title="BlazeGuard.ai"
     link="https://devpost.com/software/blazeguard-ai"
+    tags={["python", "machine learning"]}
   >
     Trained a ResNet 18-layer CNN on Canadian wildfire satellite images over the
     last 30 years to predict wildfire outbreaks. Won 2nd place @ UCSD
     DiamondHacks 2024.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow title="Notes Website" link="https://kytrinh.me/notes/">
+  <TagItemRow
+    title="Notes Website"
+    link="https://kytrinh.me/notes/"
+    tags={["markdown", "quartz"]}
+  >
     Built and deployed a Quartz-based notes site to GitHub Pages, with CI
     workflows that automatically rebuild and publish updates on every push.
     Implemented custom Quartz plugins to support math-heavy content, including a
     Desmos transformer/emitter that integrates Obsidian Desmos graphs via
     pre-generated SVG assets, plus TikZ support for embedded diagram rendering.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow title="Distributed ML Data Loading with gRPC">
+  <TagItemRow
+    title="Distributed ML Data Loading with gRPC"
+    tags={["distributed systems", "python", "kubernetes"]}
+  >
     Implemented a distributed data loading pipeline for
     <a
       href="https://www.cs.toronto.edu/~kriz/cifar.html"
@@ -195,9 +283,9 @@ import ItemRow from "./ItemRow.astro";
       rel="noopener noreferrer"
       class="text-light-base0B dark:text-dark-base0B underline">here</a
     >.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow title="Firefox Render Relay (F2R2)">
+  <TagItemRow title="Firefox Render Relay (F2R2)" tags={["rust", "systems"]}>
     Developed a high-fidelity, privacy-focused remote browsing architecture by
     streaming underlying WebRender drawing commands. F2R2 hooks directly into
     Firefox's graphics pipeline to relay rendering state to a thin client.
@@ -217,22 +305,24 @@ import ItemRow from "./ItemRow.astro";
       rel="noopener noreferrer"
       class="text-light-base0B dark:text-dark-base0B underline">here</a
     >.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow
+  <TagItemRow
     title="Auslander Buchsbaum Serre Theorem Formalization"
     link="https://github.com/UCSD-computational-number-theory/lean_abs"
+    tags={["lean4", "math"]}
   >
     Attempted to formalize the Auslander-Buchsbaum-Serre theorem in Lean4, which
     characterizes regular local rings as those with finite global dimension.
     Project unfinished/canceled due to the complexity of the required
     homological algebra and commutative algebra machinery, alongside the steep
     learning curve of Lean4 and its mathlib library.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow
+  <TagItemRow
     title="Concrete Semantics in Lean4"
     link="https://github.com/pink10000/concrete-semantics-lean"
+    tags={["lean4", "math"]}
   >
     Formalized select chapters and problems of the textbook <a
       href="https://concrete-semantics.org/"
@@ -244,35 +334,173 @@ import ItemRow from "./ItemRow.astro";
     machine-checked code. Added a small DSL layer via custom notation (e.g., list
     constructors/operators) and used Mathlib tactics (e.g., linarith, ring) to mechanize
     and simplify proof workflows. AFAIK first of it's kind on GitHub.
-  </ItemRow>
+  </TagItemRow>
 
-  <!-- <ItemRow title="Taxi Predictor">
-    Engineered a predictive model utilizing Polynomial Regression to forecast
-    taxi fares based on historical data. Built another model with a Decision
-    Tree to predict taxi trip duration. Applied feature engineering on dataset
-    of over 1 million records and optimized using scikit-learn's GridSearchCV.
-  </ItemRow> -->
-
-  <ItemRow title="Successerator Android App">
+  <TagItemRow title="Successerator Android App" tags={["java", "android"]}>
     Developed interactive UI elements for an Android To-Do app in an 6 person
     team with Agile Development. Used Java, Android Studio, JUnit, and Espresso
     (UI Testing). Built for CSE 110.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow
+  <TagItemRow
     title="Capacitive Touch Keyboard Software"
     link="https://github.com/Grace-Note-LLC/GraceNote"
+    tags={["python", "embedded"]}
   >
     Developed cross-compatible UI to program custom-made touchpads for rhythm
     games. Built with ESP32 S3 microcontroller, Flet (Python wrapper for
     Flutter), pyautogui, and pyserial. Awarded the Best Project Demo Award by
     IEEE out of 108 participants. IEEE QP FA23.
-  </ItemRow>
+  </TagItemRow>
 
-  <ItemRow title="REST API Error Handling">
+  <TagItemRow title="REST API Error Handling" tags={["python", "research"]}>
     Conducted research on REST API error handling, creating a Flask-based web
     coding environment to collect data on how software engineers handle errors
     to write code. Former research assistant at SALAD Lab @ UCSD under Professor
     Coblenz.
-  </ItemRow>
+  </TagItemRow>
 </ul>
+
+<!--
+<script>
+  function initExpFilters() {
+    const projectsList = document.getElementById("projectsList");
+    if (!projectsList) return;
+    const projectItems = Array.from(projectsList.querySelectorAll(".project-item"));
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const sortToggleBtn = document.getElementById("sortToggleBtn");
+    const filterContainer = document.getElementById("filterButtonsContainer");
+
+    let activeTag = "all";
+    let activeSort = "default"; // 'default' or 'name'
+
+    // Store the initial order of items for default sort
+    const initialOrder = projectItems.map((item, index) => ({ item, index }));
+
+    const activeClasses = ["active-filter", "bg-light-base02", "dark:bg-dark-base02", "text-light-base00", "dark:text-dark-base06", "border-transparent"];
+    const inactiveClasses = ["bg-light-base01/40", "dark:bg-dark-base01/40", "text-light-base05", "dark:text-dark-base04", "hover:bg-light-base02/45", "dark:hover:bg-dark-base02/45", "border-light-base02/40", "dark:border-dark-base02/40"];
+
+    // Helper to update visibility
+    function updateFilter() {
+      projectItems.forEach(item => {
+        const tagsAttr = item.getAttribute("data-tags") || "";
+        const tags = tagsAttr.split(",").map(t => t.trim());
+        if (activeTag === "all" || tags.includes(activeTag)) {
+          item.style.setProperty("display", "contents", "important");
+        } else {
+          item.style.setProperty("display", "none", "important");
+        }
+      });
+    }
+
+    // Helper to handle filter button styles
+    function setActiveFilterButton(tag) {
+      // Remove active styling from all existing buttons
+      const allBtns = document.querySelectorAll(".filter-btn");
+      allBtns.forEach(btn => {
+        btn.classList.remove(...activeClasses);
+        btn.classList.add(...inactiveClasses);
+      });
+
+      // Find if a button for this tag already exists
+      let activeBtn = Array.from(allBtns).find(btn => btn.getAttribute("data-tag") === tag);
+
+      // If it's a dynamic tag (e.g. "go" or "wasm"), it won't exist. Create it!
+      if (!activeBtn && tag !== "all") {
+        // Remove any previously created dynamic buttons
+        const dynamicBtn = document.getElementById("dynamic-tag-filter");
+        if (dynamicBtn) dynamicBtn.remove();
+
+        // Create new one
+        const btn = document.createElement("button");
+        btn.id = "dynamic-tag-filter";
+        btn.type = "button";
+        btn.className = "filter-btn active-filter px-2 py-0.5 rounded font-mono transition-colors border cursor-pointer " + activeClasses.join(" ");
+        btn.setAttribute("data-tag", tag);
+        btn.textContent = tag;
+        btn.addEventListener("click", () => handleTagSelect(tag));
+        filterContainer.appendChild(btn);
+        activeBtn = btn;
+      } else if (tag === "all") {
+        // Remove dynamic button if we go back to "all"
+        const dynamicBtn = document.getElementById("dynamic-tag-filter");
+        if (dynamicBtn) dynamicBtn.remove();
+      }
+
+      if (activeBtn) {
+        activeBtn.classList.remove(...inactiveClasses);
+        activeBtn.classList.add(...activeClasses);
+      }
+    }
+
+    function handleTagSelect(tag) {
+      activeTag = tag;
+      setActiveFilterButton(tag);
+      updateFilter();
+    }
+
+    // Click handler for top level filter buttons
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tag = btn.getAttribute("data-tag");
+        handleTagSelect(tag);
+      });
+    });
+
+    // Click handler for tags inside the list (capturing badge clicks)
+    document.addEventListener("click", (e) => {
+      const tagBadge = (e.target as HTMLElement).closest(".tag-badge");
+      if (tagBadge) {
+        const tag = tagBadge.getAttribute("data-tag");
+        if (tag) {
+          handleTagSelect(tag);
+          // Scroll to the top of the projects section smoothly so user sees the change
+          const filterUI = document.getElementById("filterButtonsContainer");
+          if (filterUI) {
+            filterUI.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        }
+      }
+    });
+
+    // Sorting logic
+    function updateSort() {
+      if (activeSort === "default") {
+        // Re-order DOM based on initialOrder
+        initialOrder.forEach(({ item }) => {
+          projectsList.appendChild(item);
+        });
+        if (sortToggleBtn) sortToggleBtn.textContent = "default";
+      } else if (activeSort === "name") {
+        // Sort alphabetically by data-title
+        const sorted = [...projectItems].sort((a, b) => {
+          const titleA = a.getAttribute("data-title") || "";
+          const titleB = b.getAttribute("data-title") || "";
+          return titleA.localeCompare(titleB);
+        });
+        sorted.forEach(item => {
+          projectsList.appendChild(item);
+        });
+        if (sortToggleBtn) sortToggleBtn.textContent = "alphabetical";
+      }
+    }
+
+    if (sortToggleBtn) {
+      sortToggleBtn.addEventListener("click", () => {
+        if (activeSort === "default") {
+          activeSort = "name";
+        } else {
+          activeSort = "default";
+        }
+        updateSort();
+      });
+    }
+  }
+
+  // Initialize immediately
+  initExpFilters();
+
+  // Support Astro View Transitions if applicable
+  document.addEventListener("astro:page-load", initExpFilters);
+</script>
+-->
